@@ -35,7 +35,7 @@ html, body, #root {
 .section-5 { background: url('./assets/background5.jpg') center/cover no-repeat; }
 .section-6 { background: url('./assets/background6.jpg') center/cover no-repeat; }
 
-/* Header */
+/* === HEADER – WHITE BG, BLACK TEXT, GREEN HOVER === */
 .header {
   position: fixed;
   top: 0;
@@ -47,6 +47,9 @@ html, body, #root {
   justify-content: space-between;
   align-items: center;
   pointer-events: none;
+  background: white !important;
+  color: #000 !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 /* Left Nav */
@@ -57,17 +60,17 @@ html, body, #root {
   font-family: Arial, sans-serif;
   font-weight: bold;
   font-size: 1.1rem;
-  color: white;
   text-transform: uppercase;
   letter-spacing: 1px;
   pointer-events: auto;
 }
 .nav-item {
   cursor: pointer;
-  transition: opacity 0.3s ease;
+  transition: color 0.3s ease;
+  color: #000 !important;
 }
 .nav-item:hover {
-  opacity: 0.8;
+  color: #28a745 !important;
 }
 
 /* Right: Language + RSVP */
@@ -79,8 +82,8 @@ html, body, #root {
 }
 .lang-btn {
   background: none;
-  border: 2px solid white;
-  color: white;
+  border: 2px solid #000;
+  color: #000 !important;
   padding: 0.4rem 0.8rem;
   font-size: 0.9rem;
   font-weight: bold;
@@ -90,24 +93,25 @@ html, body, #root {
   transition: all 0.3s;
 }
 .lang-btn.active {
-  background: white;
-  color: #333;
+  background: #000;
+  color: white !important;
 }
 .lang-btn:hover:not(.active) {
-  background: rgba(255,255,255,0.2);
+  background: rgba(0,0,0,0.1);
+  color: #28a745 !important;
 }
 .rsvp-header {
   font-family: Arial, sans-serif;
   font-weight: bold;
   font-size: 1.1rem;
-  color: white;
   text-transform: uppercase;
   letter-spacing: 1px;
   cursor: pointer;
-  transition: opacity 0.3s ease;
+  transition: color 0.3s ease;
+  color: #000 !important;
 }
 .rsvp-header:hover {
-  opacity: 0.8;
+  color: #28a745 !important;
 }
 
 /* Hamburger Button */
@@ -124,18 +128,18 @@ html, body, #root {
 .hamburger-line {
   width: 25px;
   height: 3px;
-  background: white;
+  background: #000;
   transition: 0.3s;
 }
 
-/* Mobile Menu Overlay */
+/* Mobile Menu */
 .mobile-menu {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.9);
+  background: white;
   z-index: 105;
   opacity: 0;
   visibility: hidden;
@@ -157,7 +161,7 @@ html, body, #root {
 .mobile-nav-item {
   background: none;
   border: none;
-  color: white;
+  color: #000;
   font-size: 1.8rem;
   font-weight: bold;
   text-transform: uppercase;
@@ -166,7 +170,7 @@ html, body, #root {
   transition: color 0.3s;
 }
 .mobile-nav-item:hover {
-  color: #ddd;
+  color: #28a745;
 }
 .mobile-lang-group {
   display: flex;
@@ -176,8 +180,8 @@ html, body, #root {
 }
 .mobile-lang-btn {
   background: none;
-  border: 2px solid white;
-  color: white;
+  border: 2px solid #000;
+  color: #000;
   padding: 0.6rem 1.2rem;
   font-size: 1rem;
   font-weight: bold;
@@ -187,8 +191,8 @@ html, body, #root {
   transition: all 0.3s;
 }
 .mobile-lang-btn.active {
-  background: white;
-  color: #333;
+  background: #000;
+  color: white;
 }
 
 /* RSVP Button (Home Section) */
@@ -220,33 +224,146 @@ html, body, #root {
   color: white;
   text-shadow: 0 2px 10px rgba(0,0,0,.5);
 }
+
+/* === HIDE ALL SECTION TITLES (Dress Code, Hotels, Attractions, RSVP, etc.) === */
 .section-title {
-  font-size: 3.5rem;
-  margin-bottom: .5rem;
+  display: none !important;
 }
+
 .section-text {
   font-size: 1.3rem;
   max-width: 600px;
   margin: 0 auto 2rem;
 }
 
-/* MENU SECTION – WHITE TITLE & INTRO TEXT */
-.section-2 .section-title,
-.section-2 .section-text {
-  color: white;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+/* === HIDE MENU TITLE & INTRO TEXT === */
+.menu-container .section-title,
+.menu-container .section-text {
+  display: none !important;
 }
 
-/* Dress Code Section – WHITE TEXT */
-.dress-code-container {
-  max-width: 900px;
-  width: 100%;
-  text-align: center;
+/* === FORCE HOTELS & ATTRACTIONS INTRO TEXT TO WHITE === */
+.scrollable-container .section-text {
+  color: white !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5) !important;
 }
-.dress-code-title {
-  margin-bottom: 0.5rem;
+
+/* === MENU SECTION – PUSHED DOWN FROM HEADER === */
+.menu-container {
+  max-width: 900px;
+  width: 90%;
+  margin: 100px auto 0 auto;
+  padding: 2rem 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.menu-subsection {
+  position: relative;
+}
+.subsection-title {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
   color: white;
   text-shadow: 0 2px 10px rgba(0,0,0,.5);
+}
+
+/* Scrollable Container (Hotels, Attractions, Menu) */
+.scrollable-container {
+  max-width: 900px;
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+.scroll-controls {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 10;
+}
+.scroll-arrow {
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid white;
+  border-radius: 50%;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+  transition: all 0.3s;
+}
+.scroll-arrow:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.1);
+}
+.scroll-arrow.left::before { content: '←'; }
+.scroll-arrow.right::before { content: '→'; }
+
+.scrollable-grid {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 1rem 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollable-grid::-webkit-scrollbar { display: none; }
+
+/* Compact Cards */
+.scrollable-card {
+  flex: 0 0 260px;
+  min-width: 260px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  padding: 1.5rem 1.2rem;
+  border-radius: 0;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  scroll-snap-align: center;
+  color: white;
+  text-align: left;
+}
+.scrollable-label {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 0.8rem;
+  text-align: center;
+}
+.scrollable-list {
+  list-style: none;
+  padding-left: 1.3rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+.scrollable-list li {
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+.scrollable-list li::before {
+  content: "•";
+  position: absolute;
+  left: -1.1rem;
+  color: white;
+  font-weight: bold;
+}
+
+/* Dress Code Section */
+.dress-code-container {
+  max-width: 900px;
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
 }
 .dress-code-subtitle {
   margin-bottom: 2.5rem;
@@ -279,7 +396,6 @@ html, body, #root {
   margin-bottom: 1.2rem;
   text-transform: uppercase;
   text-align: center;
-  color: white;
 }
 .dress-code-list {
   list-style: none;
@@ -369,6 +485,7 @@ html, body, #root {
   .rsvp-form {
     max-width: 320px;
   }
+
   /* Dress Code Responsive */
   .dress-code-grid {
     flex-direction: column;
@@ -388,120 +505,29 @@ html, body, #root {
   .dress-code-list li::before {
     left: -1rem;
   }
-}
 
-/* Scrollable Container */
-.scrollable-container {
-  max-width: 1000px;
-  width: 100%;
-  text-align: center;
-  position: relative;
-}
-.scroll-controls {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  transform: translateY(-50%);
-  display: flex;
-  justify-content: space-between;
-  pointer-events: none;
-  z-index: 10;
-}
-.scroll-arrow {
-  width: 50px;
-  height: 50px;
-  background: rgba(255, 255, 255, 0.2);
-  border: 2px solid white;
-  border-radius: 50%;
-  color: white;
-  font-size: 1.5rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: auto;
-  transition: all 0.3s;
-}
-.scroll-arrow:hover {
-  background: rgba(255, 255, 255, 0.4);
-  transform: scale(1.1);
-}
-.scroll-arrow.left::before { content: '←'; }
-.scroll-arrow.right::before { content: '→'; }
-
-.scrollable-grid {
-  display: flex;
-  gap: 2rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding: 1rem 0;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-.scrollable-grid::-webkit-scrollbar { display: none; }
-
-/* -------------------------------------------------
-   UPDATED SCROLLABLE CARD STYLES (WHITE TEXT)
-   ------------------------------------------------- */
-.scrollable-card {
-  flex: 0 0 300px;
-  min-width: 300px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(5px);
-  padding: 2rem 1.5rem;
-  border-radius: 0;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  scroll-snap-align: center;
-  color: white;
-  text-align: left;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
-}
-
-.scrollable-label {
-  font-size: 1.6rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  text-align: center;
-  color: white;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
-}
-
-.scrollable-list,
-.scrollable-list li {
-  color: white;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
-}
-
-.scrollable-list li {
-  position: relative;
-  margin-bottom: 0.6rem;
-}
-.scrollable-list li::before {
-  content: "•";
-  position: absolute;
-  left: -1.2rem;
-  color: white;
-  font-weight: bold;
-}
-
-/* Section titles & intro text for Hotels & Attractions */
-.section-4 .section-title,
-.section-5 .section-title {
-  color: white;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
-}
-.section-4 .section-text,
-.section-5 .section-text {
-  color: white;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
-}
-
-/* Responsive for scrollable cards (original behavior) */
-@media (max-width: 768px) {
+  /* Menu Responsive */
+  .menu-container {
+    margin-top: 80px;
+  }
+  .menu-container,
+  .scrollable-container {
+    width: 95%;
+    padding: 1.5rem 0.5rem;
+  }
+  .subsection-title {
+    font-size: 1.6rem;
+  }
   .scrollable-card {
-    flex: 0 0 80%;
-    min-width: 80%;
+    flex: 0 0 75%;
+    min-width: 75%;
+    padding: 1.2rem 1rem;
+  }
+  .scrollable-label {
+    font-size: 1.3rem;
+  }
+  .scrollable-list {
+    font-size: 0.95rem;
   }
   .scroll-arrow {
     width: 40px;
