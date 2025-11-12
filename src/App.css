@@ -1,38 +1,124 @@
-.App {
-  text-align: center;
+/* src/App.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html, body, #root {
+  height: 100%;
+  overflow: hidden;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.app-wrapper {
+  height: 100vh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Each section = full viewport */
+.section {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  scroll-snap-align: start;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+}
+
+/* Background Images */
+.section-1 {
+  background-image: url('./assets/background1.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.section-2 {
+  background-image: url('./assets/background2.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Header – Transparent & Fixed */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem 2rem;
+  z-index: 100;
+  pointer-events: none; /* Allows clicks through */
+}
+
+.nav {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  font-size: 1.1rem;
   color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  gap: 3rem;
+  pointer-events: auto; /* Re-enable clicks on nav items */
 }
 
-.App-link {
-  color: #61dafb;
+.nav-item {
+  cursor: pointer;
+  transition: opacity 0.3s ease;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nav-item:hover {
+  opacity: 0.8;
+}
+
+.rsvp-header {
+  margin-left: auto;
+}
+
+/* RSVP Button (First Section) */
+.rsvp-button {
+  position: relative;
+  top: 180px;
+  padding: 1rem 2.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  background-color: transparent;
+  border: 3px solid white;
+  border-radius: 0;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.rsvp-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Section 2 Content */
+.section-content {
+  text-align: center;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.section-title {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.section-text {
+  font-size: 1.3rem;
+  max-width: 600px;
+  margin: 0 auto;
 }

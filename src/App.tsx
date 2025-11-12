@@ -1,24 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
+// src/App.tsx
+import React, { useRef } from 'react';
 import './App.css';
 
 function App() {
+  const hotelsRef = useRef<HTMLDivElement>(null);
+
+  const scrollToHotels = () => {
+    hotelsRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="app-wrapper">
+      {/* Header – stays fixed on top */}
+      <header className="header">
+        <nav className="nav">
+          <span className="nav-item" onClick={scrollToHotels}>
+            Hotels
+          </span>
+          <span className="nav-item">Menu</span>
+          <span className="nav-item rsvp-header">RSVP</span>
+        </nav>
       </header>
+
+      {/* Section 1 – First Background */}
+      <section className="section section-1">
+        <button className="rsvp-button">RSVP</button>
+      </section>
+
+      {/* Section 2 – Second Background (Hotels) */}
+      <section ref={hotelsRef} className="section section-2">
+        <div className="section-content">
+          <h1 className="section-title">Hotels</h1>
+          <p className="section-text">
+            Explore our recommended accommodations.
+          </p>
+        </div>
+      </section>
     </div>
   );
 }
