@@ -4,80 +4,56 @@ import './App.css';
 
 // === Translation Types ===
 interface Translation {
-  // General
-  menu: string;
+  home: string;
+  venue: string;
+  itinerary: string;
   dressCode: string;
+  rsvp: string;
+  gifts: string;
   hotels: string;
   attractions: string;
-  rsvp: string;
-  homeRsvp: string;
-  menuIntro: string;
+  instagram: string;
+  thankYou: string;
 
-  // Menu Section
-  appetizers: string;
-  entrees: string;
+  homeIntro: string;
 
-  // Appetizers
-  app1: string;
-  app1Desc: string[];
-  app2: string;
-  app2Desc: string[];
-  app3: string;
-  app3Desc: string[];
-  app4: string;
-  app4Desc: string[];
+  // Venue
+  venueName: string;
+  venueAddress: string;
+  viewOnMaps: string;
 
-  // Entrees
-  ent1: string;
-  ent1Desc: string[];
-  ent2: string;
-  ent2Desc: string[];
-  ent3: string;
-  ent3Desc: string[];
-  ent4: string;
-  ent4Desc: string[];
+  // Itinerary
+  itineraryItems: string[];
+
+  // Dress Code
+  dressCodeHeader: string;
+  dressCodeGalleryText: string;
+
+  // RSVP
+  rsvpText: string;
+  contactText: string;
+  ednaPhone: string;
+  tylerPhone: string;
+
+  // Gifts
+  registryText: string;
+  zelleCashAppText: string;
+  zelleEmail: string;
+  cashAppTag: string;
 
   // Hotels
   hotelsIntro: string;
-  hotel1: string;
-  hotel1Desc: string[];
-  hotel2: string;
-  hotel2Desc: string[];
-  hotel3: string;
-  hotel3Desc: string[];
-  hotel4: string;
-  hotel4Desc: string[];
+  hotel1: string; hotel1Desc: string[];
+  hotel2: string; hotel2Desc: string[];
+  hotel3: string; hotel3Desc: string[];
+  hotel4: string; hotel4Desc: string[];
 
   // Attractions
   attractionsIntro: string;
-  attr1: string;
-  attr1Desc: string[];
-  attr2: string;
-  attr2Desc: string[];
-  attr3: string;
-  attr3Desc: string[];
-  attr4: string;
-  attr4Desc: string[];
-
-  // Dress Code
-  dressCodeText: string;
-  men: string;
-  women: string;
-  menItems: string[];
-  womenItems: string[];
-
-  // RSVP
-  rsvpTitle: string;
-  rsvpText: string;
-  name: string;
-  email: string;
-  appetizer: string;
-  entree: string;
-  submit: string;
-
-  // Dropdown Options
-  appetizerOptions: string[];
-  entreeOptions: string[];
+  attr1: string; attr1Desc: string[];
+  attr2: string; attr2Desc: string[];
+  attr3: string; attr3Desc: string[];
+  attr4: string; attr4Desc: string[];
 }
 
 type Lang = 'en' | 'es';
@@ -85,33 +61,42 @@ type Lang = 'en' | 'es';
 // === Translations ===
 const translations: Record<Lang, Translation> = {
   en: {
-    menu: 'Menu',
+    home: 'Home',
+    venue: 'Venue',
+    itinerary: 'Itinerary',
     dressCode: 'Dress Code',
+    rsvp: 'RSVP',
+    gifts: 'Gifts',
     hotels: 'Hotels',
     attractions: 'Attractions',
-    rsvp: 'RSVP',
-    homeRsvp: 'RSVP',
-    menuIntro: 'Delicious dining options for every taste.',
-    appetizers: 'Appetizers',
-    entrees: 'Entrees',
+    instagram: 'Instagram',
+    thankYou: 'Thank You',
 
-    app1: 'Caesar Salad',
-    app1Desc: ['Crisp romaine', 'Parmesan', 'Croutons', 'House Caesar dressing'],
-    app2: 'Bruschetta',
-    app2Desc: ['Grilled bread', 'Fresh tomatoes', 'Basil', 'Garlic & olive oil'],
-    app3: 'Shrimp Cocktail',
-    app3Desc: ['Chilled shrimp', 'Spicy cocktail sauce', 'Lemon wedge', 'Fresh herbs'],
-    app4: 'Caprese Skewers',
-    app4Desc: ['Mozzarella', 'Cherry tomatoes', 'Basil', 'Balsamic glaze'],
+    homeIntro: 'It is with great joy and affection that we invite you to be a part of this significant day of our lives.',
 
-    ent1: 'Grilled Salmon',
-    ent1Desc: ['Atlantic salmon', 'Lemon herb butter', 'Asparagus', 'Wild rice'],
-    ent2: 'Filet Mignon',
-    ent2Desc: ['8oz beef tenderloin', 'Red wine reduction', 'Mashed potatoes', 'Seasonal veg'],
-    ent3: 'Vegetable Risotto',
-    ent3Desc: ['Arborio rice', 'Mushrooms', 'Peas', 'Parmesan', 'Truffle oil'],
-    ent4: 'Herb Roasted Chicken',
-    ent4Desc: ['Free-range chicken', 'Garlic & rosemary', 'Roasted potatoes', 'Green beans'],
+    venueName: 'Swan Coach House',
+    venueAddress: '3130 Slaton Drive NW, Atlanta, GA 30305',
+    viewOnMaps: 'View on Google Maps',
+
+    itineraryItems: [
+      '3:00 PM – Ceremony',
+      '4:30 PM – Cocktail Hour',
+      '5:30 PM – Reception & Dinner',
+      '9:00 PM – Dancing & Celebration',
+    ],
+
+    dressCodeHeader: 'Dress Code',
+    dressCodeGalleryText: 'Please check the gallery for ideas.',
+
+    rsvpText: 'Please contact for confirmation and menu',
+    contactText: 'Please contact for confirmation and menu',
+    ednaPhone: '+1 (555) 123-4567',
+    tylerPhone: '+1 (555) 987-6543',
+
+    registryText: 'Wedding Registry',
+    zelleCashAppText: 'Your presence is the greatest gift. If you wish to contribute, a honeymoon fund would be appreciated.',
+    zelleEmail: 'zelle@example.com',
+    cashAppTag: '$EdnaTyler',
 
     hotelsIntro: 'Recommended hotels near the venue in Atlanta, GA.',
     hotel1: 'The Ritz-Carlton, Atlanta',
@@ -132,52 +117,44 @@ const translations: Record<Lang, Translation> = {
     attr3Desc: ['Atlanta\'s Central Park', 'Walking trails', 'Dog park & lake', 'Free concerts'],
     attr4: 'Atlanta Botanical Garden',
     attr4Desc: ['30 acres of gardens', 'Orchid center', 'Canopy walk', 'Seasonal exhibits'],
-
-    dressCodeText: 'Cocktail attire encouraged.',
-    men: 'Men',
-    women: 'Women',
-    menItems: ['Dark suit or tuxedo', 'Dress shirt', 'Tie or bow tie', 'Dress shoes'],
-    womenItems: ['Cocktail dress', 'Elegant gown', 'Dressy separates', 'Heels or dress sandals'],
-
-    rsvpTitle: 'RSVP',
-    rsvpText: 'Let us know you\'re coming!',
-    name: 'Your Name',
-    email: 'Email',
-    appetizer: 'Appetizer',
-    entree: 'Entree',
-    submit: 'Send RSVP',
-
-    appetizerOptions: ['Select Appetizer', 'Caesar Salad', 'Bruschetta', 'Shrimp Cocktail', 'Caprese Skewers'],
-    entreeOptions: ['Select Entree', 'Grilled Salmon', 'Filet Mignon', 'Vegetable Risotto', 'Herb Roasted Chicken'],
   },
   es: {
-    menu: 'Menú',
+    home: 'Inicio',
+    venue: 'Lugar',
+    itinerary: 'Itinerario',
     dressCode: 'Código de Vestimenta',
+    rsvp: 'RSVP',
+    gifts: 'Regalos',
     hotels: 'Hoteles',
     attractions: 'Atracciones',
-    rsvp: 'RSVP',
-    homeRsvp: 'RSVP',
-    menuIntro: 'Deliciosas opciones gastronómicas para todos los gustos.',
-    appetizers: 'Aperitivos',
-    entrees: 'Platos Principales',
+    instagram: 'Instagram',
+    thankYou: 'Gracias',
 
-    app1: 'Ensalada César',
-    app1Desc: ['Lechuga romana crujiente', 'Parmesano', 'Crutones', 'Aderezo César casero'],
-    app2: 'Bruschetta',
-    app2Desc: ['Pan tostado', 'Tomates frescos', 'Albahaca', 'Ajo y aceite de oliva'],
-    app3: 'Cóctel de Camarones',
-    app3Desc: ['Camarones fríos', 'Salsa picante', 'Limón', 'Hierbas frescas'],
-    app4: 'Brochetas Caprese',
-    app4Desc: ['Mozzarella', 'Tomates cherry', 'Albahaca', 'Glaseado balsámico'],
+    homeIntro: 'Es con gran alegría y cariño que los invitamos a ser parte de este día tan significativo en nuestras vidas.',
 
-    ent1: 'Salmón a la Parrilla',
-    ent1Desc: ['Salmón atlántico', 'Mantequilla de limón', 'Espárragos', 'Arroz salvaje'],
-    ent2: 'Filete Mignon',
-    ent2Desc: ['8oz de lomo', 'Reducción de vino tinto', 'Puré de papas', 'Verduras de temporada'],
-    ent3: 'Rissoto de Verduras',
-    ent3Desc: ['Arroz arborio', 'Champiñones', 'Guisantes', 'Parmesano', 'Aceite de trufa'],
-    ent4: 'Pollo Asado con Hierbas',
-    ent4Desc: ['Pollo de corral', 'Ajo y romero', 'Papas asadas', 'Judías verdes'],
+    venueName: 'Swan Coach House',
+    venueAddress: '3130 Slaton Drive NW, Atlanta, GA 30305',
+    viewOnMaps: 'Ver en Google Maps',
+
+    itineraryItems: [
+      '3:00 PM – Ceremonia',
+      '4:30 PM – Hora del cóctel',
+      '5:30 PM – Recepción y cena',
+      '9:00 PM – Baile y celebración',
+    ],
+
+    dressCodeHeader: 'Código de Vestimenta',
+    dressCodeGalleryText: 'Por favor revisa la galería para ideas.',
+
+    rsvpText: 'Por favor contacta para confirmación y menú',
+    contactText: 'Por favor contacta para confirmación y menú',
+    ednaPhone: '+1 (555) 123-4567',
+    tylerPhone: '+1 (555) 987-6543',
+
+    registryText: 'Registro de Bodas',
+    zelleCashAppText: 'Tu presencia es el mejor regalo. Si deseas contribuir, un fondo para la luna de miel sería muy apreciado.',
+    zelleEmail: 'zelle@example.com',
+    cashAppTag: '$EdnaTyler',
 
     hotelsIntro: 'Hoteles recomendados cerca del lugar en Atlanta, GA.',
     hotel1: 'The Ritz-Carlton, Atlanta',
@@ -198,53 +175,29 @@ const translations: Record<Lang, Translation> = {
     attr3Desc: ['El Central Park de Atlanta', 'Senderos para caminar', 'Parque para perros y lago', 'Conciertos gratuitos'],
     attr4: 'Jardín Botánico de Atlanta',
     attr4Desc: ['30 acres de jardines', 'Centro de orquídeas', 'Paseo por el dosel', 'Exhibiciones estacionales'],
-
-    dressCodeText: 'Se recomienda vestimenta de cóctel.',
-    men: 'Caballeros',
-    women: 'Damas',
-    menItems: ['Traje oscuro o esmoquin', 'Camisa de vestir', 'Corbata o pajarita', 'Zapatos elegantes'],
-    womenItems: ['Vestido de cóctel', 'Vestido elegante', 'Conjunto sofisticado', 'Tacones o sandalias elegantes'],
-
-    rsvpTitle: 'RSVP',
-    rsvpText: '¡Confírmanos tu asistencia!',
-    name: 'Tu Nombre',
-    email: 'Correo',
-    appetizer: 'Aperitivo',
-    entree: 'Plato Principal',
-    submit: 'Enviar RSVP',
-
-    appetizerOptions: ['Selecciona Aperitivo', 'Ensalada César', 'Bruschetta', 'Cóctel de Camarones', 'Brochetas Caprese'],
-    entreeOptions: ['Selecciona Plato', 'Salmón a la Parrilla', 'Filete Mignon', 'Rissoto de Verduras', 'Pollo Asado con Hierbas'],
   },
-};
-
-// === Type-Safe Helper ===
-const getDesc = (
-  t: Translation,
-  prefix: 'app' | 'ent' | 'hotel' | 'attr',
-  index: 1 | 2 | 3 | 4
-): string[] => {
-  const key = `${prefix}${index}Desc` as keyof Translation;
-  return t[key] as string[];
 };
 
 // === App Component ===
 function App() {
   const [lang, setLang] = useState<Lang>('en');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [galleryIndex, setGalleryIndex] = useState(0);
 
   const t = translations[lang];
 
-  const menuRef = useRef<HTMLDivElement | null>(null);
+  const homeRef = useRef<HTMLDivElement | null>(null);
+  const venueRef = useRef<HTMLDivElement | null>(null);
+  const itineraryRef = useRef<HTMLDivElement | null>(null);
   const dressCodeRef = useRef<HTMLDivElement | null>(null);
+  const rsvpRef = useRef<HTMLDivElement | null>(null);
+  const giftsRef = useRef<HTMLDivElement | null>(null);
   const hotelsRef = useRef<HTMLDivElement | null>(null);
   const attractionsRef = useRef<HTMLDivElement | null>(null);
-  const rsvpRef = useRef<HTMLDivElement | null>(null);
+  const instagramRef = useRef<HTMLDivElement | null>(null);
 
   const hotelsScrollRef = useRef<HTMLDivElement | null>(null);
   const attractionsScrollRef = useRef<HTMLDivElement | null>(null);
-  const appetizersScrollRef = useRef<HTMLDivElement | null>(null);
-  const entreesScrollRef = useRef<HTMLDivElement | null>(null);
 
   const scrollTo = (ref: React.RefObject<HTMLDivElement | null>) => {
     if (ref.current) {
@@ -262,12 +215,36 @@ function App() {
     });
   };
 
+  // === Dress Code Gallery Images (8 images) ===
+  const galleryImages = [
+    './assets/dress1.jpg',
+    './assets/dress2.jpg',
+    './assets/dress3.jpg',
+    './assets/dress4.jpg',
+    './assets/dress5.jpg',
+    './assets/dress6.jpg',
+    './assets/dress7.jpg',
+    './assets/dress8.jpg',
+  ];
+
+  const nextImage = () => {
+    setGalleryIndex((prev) => (prev + 1) % galleryImages.length);
+  };
+
+  const prevImage = () => {
+    setGalleryIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
+  };
+
   const navItems = [
-    { label: t.menu, ref: menuRef },
+    { label: t.home, ref: homeRef },
+    { label: t.venue, ref: venueRef },
+    { label: t.itinerary, ref: itineraryRef },
     { label: t.dressCode, ref: dressCodeRef },
+    { label: t.rsvp, ref: rsvpRef },
+    { label: t.gifts, ref: giftsRef },
     { label: t.hotels, ref: hotelsRef },
     { label: t.attractions, ref: attractionsRef },
-    { label: t.rsvp, ref: rsvpRef },
+    { label: t.instagram, ref: instagramRef },
   ];
 
   return (
@@ -322,89 +299,132 @@ function App() {
       </div>
 
       {/* Section 1 – Home */}
-      <section className="section section-1">
-        <button className="rsvp-button" onClick={() => scrollTo(rsvpRef)}>
-          {t.homeRsvp}
-        </button>
+      <section ref={homeRef} className="section section-1">
+        <div className="section-content">
+          <p className="section-subtitle">
+            {lang === 'en' ? 'Our Wedding' : 'Nuestra Boda'}
+          </p>
+          <h1 className="section-title">Edna and Tyler</h1>
+          <p className="section-date">04/04/26</p>
+          <p className="home-intro">{t.homeIntro}</p>
+        </div>
       </section>
 
-      {/* Section 2 – Menu */}
-      <section ref={menuRef} className="section section-2">
-        <div className="menu-container">
-          <h1 className="section-title">{t.menu}</h1>
-          <p className="section-text">{t.menuIntro}</p>
-
-          {/* Appetizers */}
-          <div className="menu-subsection">
-            <h2 className="subsection-title">{t.appetizers}</h2>
-            <div className="scroll-controls">
-              <button className="scroll-arrow left" onClick={() => scrollHorizontal(appetizersScrollRef.current, 'left')} />
-              <button className="scroll-arrow right" onClick={() => scrollHorizontal(appetizersScrollRef.current, 'right')} />
-            </div>
-            <div className="scrollable-grid" ref={appetizersScrollRef}>
-              {[t.app1, t.app2, t.app3, t.app4].map((title, i) => (
-                <div key={title} className="scrollable-card">
-                  <h3 className="scrollable-label">{title}</h3>
-                  <ul className="scrollable-list">
-                    {getDesc(t, 'app', (i + 1) as 1 | 2 | 3 | 4).map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Entrees */}
-          <div className="menu-subsection">
-            <h2 className="subsection-title">{t.entrees}</h2>
-            <div className="scroll-controls">
-              <button className="scroll-arrow left" onClick={() => scrollHorizontal(entreesScrollRef.current, 'left')} />
-              <button className="scroll-arrow right" onClick={() => scrollHorizontal(entreesScrollRef.current, 'right')} />
-            </div>
-            <div className="scrollable-grid" ref={entreesScrollRef}>
-              {[t.ent1, t.ent2, t.ent3, t.ent4].map((title, i) => (
-                <div key={title} className="scrollable-card">
-                  <h3 className="scrollable-label">{title}</h3>
-                  <ul className="scrollable-list">
-                    {getDesc(t, 'ent', (i + 1) as 1 | 2 | 3 | 4).map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
+      {/* Section 2 – Venue */}
+      <section ref={venueRef} className="section section-venue">
+        <div className="venue-backdrop">
+          <div className="section-content">
+            <h2 className="venue-title">
+              {lang === 'en' ? 'The Venue' : 'El Lugar'}
+            </h2>
+            <p className="venue-name">{t.venueName}</p>
+            <p className="venue-address">{t.venueAddress}</p>
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Swan+Coach+House+Atlanta"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="venue-link"
+            >
+              {t.viewOnMaps}
+            </a>
           </div>
         </div>
       </section>
 
-      {/* Section 3 – Dress Code */}
+      {/* Section 3 – Itinerary */}
+      <section ref={itineraryRef} className="section section-itinerary">
+        <div className="itinerary-backdrop">
+          <div className="section-content">
+            <h2 className="itinerary-title">
+              {lang === 'en' ? 'Itinerary' : 'Itinerario'}
+            </h2>
+            <ul className="itinerary-list">
+              {t.itineraryItems.map((item, i) => (
+                <li key={i}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 4 – Dress Code */}
       <section ref={dressCodeRef} className="section section-3">
         <div className="dress-code-container">
-          <h1 className="section-title dress-code-title">{t.dressCode}</h1>
-          <p className="section-text dress-code-subtitle">{t.dressCodeText}</p>
-          <div className="dress-code-grid">
-            <div className="dress-code-card">
-              <h2 className="dress-code-label">{t.men}</h2>
-              <ul className="dress-code-list">
-                {t.menItems.map((item) => <li key={item}>{item}</li>)}
-              </ul>
-            </div>
-            <div className="dress-code-card">
-              <h2 className="dress-code-label">{t.women}</h2>
-              <ul className="dress-code-list">
-                {t.womenItems.map((item) => <li key={item}>{item}</li>)}
-              </ul>
+          <h1 className="dress-code-header">{t.dressCodeHeader}</h1>
+          <p className="gallery-text">{t.dressCodeGalleryText}</p>
+
+          {/* Gallery Carousel */}
+          <div className="gallery-carousel">
+            <button className="gallery-arrow left" onClick={prevImage} />
+            <img
+              src={galleryImages[galleryIndex]}
+              alt={`Dress code inspiration ${galleryIndex + 1}`}
+              className="gallery-image"
+            />
+            <button className="gallery-arrow right" onClick={nextImage} />
+          </div>
+        </div>
+      </section>
+
+      {/* Section 5 – RSVP */}
+      <section ref={rsvpRef} className="section section-6">
+        <div className="rsvp-backdrop">
+          <div className="section-content">
+            <h1 className="rsvp-title">{t.rsvp}</h1>
+            <p className="rsvp-text">{t.contactText}</p>
+            <div className="whatsapp-links">
+              <a
+                href={`https://wa.me/${t.ednaPhone.replace(/[^0-9]/g, '')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="whatsapp-btn"
+              >
+                Edna
+              </a>
+              <a
+                href={`https://wa.me/${t.tylerPhone.replace(/[^0-9]/g, '')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="whatsapp-btn"
+              >
+                Tyler
+              </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Section 4 – Hotels */}
+      {/* Section 6 – Gifts */}
+      <section ref={giftsRef} className="section section-gifts">
+        <div className="gifts-container">
+          <h1 className="gifts-title">{t.gifts}</h1>
+          <div className="gifts-grid">
+            <div className="gifts-left">
+              <h2 className="gifts-subtitle">{t.registryText}</h2>
+              <div className="registry-buttons">
+                <a href="https://amazon.com/registry" target="_blank" rel="noopener noreferrer" className="registry-btn amazon">
+                  Amazon
+                </a>
+                <a href="https://macys.com/registry" target="_blank" rel="noopener noreferrer" className="registry-btn macys">
+                  Macy's
+                </a>
+              </div>
+            </div>
+            <div className="gifts-right">
+              <p className="gifts-text">{t.zelleCashAppText}</p>
+              <div className="payment-links">
+                <a href={`mailto:${t.zelleEmail}`} className="payment-btn zelle">Zelle</a>
+                <a href={`https://cash.app/${t.cashAppTag}`} target="_blank" rel="noopener noreferrer" className="payment-btn cashapp">CashApp</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 7 – Hotels */}
       <section ref={hotelsRef} className="section section-4">
         <div className="scrollable-container">
-          <h1 className="section-title">{t.hotels}</h1>
-          <p className="section-text">{t.hotelsIntro}</p>
+          <p className="section-intro">{t.hotelsIntro}</p>
           <div className="scroll-controls">
             <button className="scroll-arrow left" onClick={() => scrollHorizontal(hotelsScrollRef.current, 'left')} />
             <button className="scroll-arrow right" onClick={() => scrollHorizontal(hotelsScrollRef.current, 'right')} />
@@ -414,7 +434,7 @@ function App() {
               <div key={title} className="scrollable-card">
                 <h2 className="scrollable-label">{title}</h2>
                 <ul className="scrollable-list">
-                  {getDesc(t, 'hotel', (i + 1) as 1 | 2 | 3 | 4).map((item) => (
+                  {(t[`hotel${i + 1}Desc` as keyof Translation] as string[]).map((item) => (
                     <li key={item}>{item}</li>
                   ))}
                 </ul>
@@ -424,11 +444,10 @@ function App() {
         </div>
       </section>
 
-      {/* Section 5 – Attractions */}
+      {/* Section 8 – Attractions */}
       <section ref={attractionsRef} className="section section-5">
         <div className="scrollable-container">
-          <h1 className="section-title">{t.attractions}</h1>
-          <p className="section-text">{t.attractionsIntro}</p>
+          <p className="section-intro">{t.attractionsIntro}</p>
           <div className="scroll-controls">
             <button className="scroll-arrow left" onClick={() => scrollHorizontal(attractionsScrollRef.current, 'left')} />
             <button className="scroll-arrow right" onClick={() => scrollHorizontal(attractionsScrollRef.current, 'right')} />
@@ -438,7 +457,7 @@ function App() {
               <div key={title} className="scrollable-card">
                 <h2 className="scrollable-label">{title}</h2>
                 <ul className="scrollable-list">
-                  {getDesc(t, 'attr', (i + 1) as 1 | 2 | 3 | 4).map((item) => (
+                  {(t[`attr${i + 1}Desc` as keyof Translation] as string[]).map((item) => (
                     <li key={item}>{item}</li>
                   ))}
                 </ul>
@@ -448,38 +467,22 @@ function App() {
         </div>
       </section>
 
-      {/* Section 6 – RSVP */}
-      <section ref={rsvpRef} className="section section-6">
-        <div className="section-content">
-          <h1 className="section-title">{t.rsvpTitle}</h1>
-          <p className="section-text">{t.rsvpText}</p>
-          <form className="rsvp-form">
-            <input type="text" placeholder={t.name} required />
-            <input type="email" placeholder={t.email} required />
-            <select className="rsvp-select" required>
-              {t.appetizerOptions.map((opt) => (
-                <option
-                  key={opt}
-                  value={opt === t.appetizerOptions[0] ? '' : opt}
-                  disabled={opt === t.appetizerOptions[0]}
-                >
-                  {opt}
-                </option>
-              ))}
-            </select>
-            <select className="rsvp-select" required>
-              {t.entreeOptions.map((opt) => (
-                <option
-                  key={opt}
-                  value={opt === t.entreeOptions[0] ? '' : opt}
-                  disabled={opt === t.entreeOptions[0]}
-                >
-                  {opt}
-                </option>
-              ))}
-            </select>
-            <button type="submit">{t.submit}</button>
-          </form>
+      {/* Section 9 – Instagram + Thank You */}
+      <section ref={instagramRef} className="section section-instagram">
+        <div className="instagram-grid">
+          <div className="instagram-left">
+            <h2 className="instagram-title">{t.instagram}</h2>
+            <p className="instagram-hashtag">#EdnaAndTyler2026</p>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="instagram-link">
+              Follow on Instagram
+            </a>
+          </div>
+          <div className="instagram-right">
+            <h2 className="thankyou-title">{t.thankYou}</h2>
+            <p className="thankyou-text">
+              We are so grateful for your love and support. Thank you for being part of our journey.
+            </p>
+          </div>
         </div>
       </section>
     </div>

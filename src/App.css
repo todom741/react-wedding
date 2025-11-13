@@ -29,13 +29,16 @@ html, body, #root {
 
 /* Background images */
 .section-1 { background: url('./assets/background1.jpg') center/cover no-repeat; }
-.section-2 { background: url('./assets/background2.jpg') center/cover no-repeat; }
+.section-venue { background: url('./assets/venue-bg.jpg') center/cover no-repeat; }
+.section-itinerary { background: url('./assets/itinerary-bg.jpg') center/cover no-repeat; }
 .section-3 { background: url('./assets/background3.jpg') center/cover no-repeat; }
 .section-4 { background: url('./assets/background4.jpg') center/cover no-repeat; }
 .section-5 { background: url('./assets/background5.jpg') center/cover no-repeat; }
 .section-6 { background: url('./assets/background6.jpg') center/cover no-repeat; }
+.section-gifts { background: url('./assets/gifts-bg.jpg') center/cover no-repeat; }
+.section-instagram { background: url('./assets/instagram-bg.jpg') center/cover no-repeat; }
 
-/* === HEADER – WHITE BG, BLACK TEXT, GREEN HOVER === */
+/* === HEADER – OVERFLOW SCROLL ON SMALL SCREENS === */
 .header {
   position: fixed;
   top: 0;
@@ -47,15 +50,18 @@ html, body, #root {
   justify-content: space-between;
   align-items: center;
   pointer-events: none;
-  background: white !important;
-  color: #000 !important;
+  background: white;
+  color: #000;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
 }
 
-/* Left Nav */
+.header::-webkit-scrollbar { display: none; }
+
 .nav-left {
   display: flex;
-  align-items: center;
   gap: 2.5rem;
   font-family: Arial, sans-serif;
   font-weight: bold;
@@ -63,27 +69,28 @@ html, body, #root {
   text-transform: uppercase;
   letter-spacing: 1px;
   pointer-events: auto;
+  flex-shrink: 0;
 }
 .nav-item {
   cursor: pointer;
   transition: color 0.3s ease;
-  color: #000 !important;
+  color: #000;
 }
 .nav-item:hover {
-  color: #28a745 !important;
+  color: #28a745;
 }
 
-/* Right: Language + RSVP */
+/* Right: Language */
 .nav-right {
   display: flex;
-  align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
   pointer-events: auto;
+  flex-shrink: 0;
 }
 .lang-btn {
   background: none;
   border: 2px solid #000;
-  color: #000 !important;
+  color: #000;
   padding: 0.4rem 0.8rem;
   font-size: 0.9rem;
   font-weight: bold;
@@ -94,27 +101,14 @@ html, body, #root {
 }
 .lang-btn.active {
   background: #000;
-  color: white !important;
+  color: white;
 }
 .lang-btn:hover:not(.active) {
   background: rgba(0,0,0,0.1);
-  color: #28a745 !important;
-}
-.rsvp-header {
-  font-family: Arial, sans-serif;
-  font-weight: bold;
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  cursor: pointer;
-  transition: color 0.3s ease;
-  color: #000 !important;
-}
-.rsvp-header:hover {
-  color: #28a745 !important;
+  color: #28a745;
 }
 
-/* Hamburger Button */
+/* Hamburger */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -195,88 +189,404 @@ html, body, #root {
   color: white;
 }
 
-/* RSVP Button (Home Section) */
-.rsvp-button {
-  position: relative;
-  top: 180px;
-  padding: 1rem 2.5rem;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: white;
-  background: transparent;
-  border: 3px solid white;
-  border-radius: 0;
-  cursor: pointer;
-  box-shadow: 0 8px 20px rgba(0,0,0,.3);
-  transition: all .3s ease;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-.rsvp-button:hover {
-  background: rgba(255,255,255,.1);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 25px rgba(0,0,0,.4);
-}
-
-/* Section Content */
-.section-content {
-  text-align: center;
-  color: white;
-  text-shadow: 0 2px 10px rgba(0,0,0,.5);
-}
-
-/* === HIDE ALL SECTION TITLES (Dress Code, Hotels, Attractions, RSVP, etc.) === */
-.section-title {
-  display: none !important;
-}
-
-.section-text {
-  font-size: 1.3rem;
-  max-width: 600px;
-  margin: 0 auto 2rem;
-}
-
-/* === HIDE MENU TITLE & INTRO TEXT === */
-.menu-container .section-title,
-.menu-container .section-text {
-  display: none !important;
-}
-
-/* === FORCE HOTELS & ATTRACTIONS INTRO TEXT TO WHITE === */
-.scrollable-container .section-text {
-  color: white !important;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5) !important;
-}
-
-/* === MENU SECTION – PUSHED DOWN FROM HEADER === */
-.menu-container {
-  max-width: 900px;
-  width: 90%;
-  margin: 100px auto 0 auto;
-  padding: 2rem 1rem;
-  text-align: center;
+/* === HOME SECTION === */
+.section-1 .section-content {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-}
-.menu-subsection {
-  position: relative;
-}
-.subsection-title {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
   color: white;
   text-shadow: 0 2px 10px rgba(0,0,0,.5);
+  max-width: 800px;
+  padding: 2rem;
 }
 
-/* Scrollable Container (Hotels, Attractions, Menu) */
-.scrollable-container {
+.section-1 .section-subtitle {
+  font-size: 1.8rem;
+  font-weight: 300;
+  letter-spacing: 3px;
+  text-transform: none;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.section-1 .section-title {
+  font-size: 4rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.section-1 .section-date {
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 3px;
+  margin: 0;
+}
+
+.home-intro {
+  font-size: 1.3rem;
+  max-width: 700px;
+  margin-top: 2rem;
+  line-height: 1.8;
+  opacity: 0.95;
+}
+
+/* === VENUE SECTION – WHITE BOX === */
+.venue-backdrop {
+  background: rgba(255, 255, 255, 0.92);
+  padding: 3rem 2rem;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  backdrop-filter: blur(8px);
+}
+
+.venue-title {
+  font-size: 2.8rem;
+  font-weight: 300;
+  color: #333;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.venue-name {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #000;
+  margin: 0.5rem 0;
+}
+
+.venue-address {
+  font-size: 1.2rem;
+  color: #555;
+  margin: 1rem 0 1.5rem;
+}
+
+.venue-link {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  background: #000;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 0;
+  transition: all 0.3s;
+}
+.venue-link:hover {
+  background: #333;
+  transform: translateY(-2px);
+}
+
+/* === ITINERARY SECTION – WHITE BORDER === */
+.itinerary-backdrop {
+  background: rgba(255, 255, 255, 0.92);
+  padding: 3rem 2rem;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  border: 3px solid white;
+  backdrop-filter: blur(8px);
+}
+
+.itinerary-title {
+  font-size: 2.8rem;
+  font-weight: 300;
+  color: #333;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.itinerary-list {
+  list-style: none;
+  font-size: 1.3rem;
+  color: #444;
+  line-height: 2.2;
+  text-align: left;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.itinerary-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.itinerary-list li:last-child {
+  border-bottom: none;
+}
+
+/* === DRESS CODE SECTION – SMALLER HEADER, MOVED DOWN === */
+.dress-code-container {
   max-width: 900px;
   width: 90%;
   margin: 0 auto;
   text-align: center;
-  position: relative;
+  padding: 6rem 2rem 2rem; /* Moved down */
 }
+
+.dress-code-header {
+  font-size: 2.8rem; /* Smaller */
+  font-weight: 300;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0,0,0,.5);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.gallery-text {
+  font-size: 1.3rem;
+  color: white;
+  margin-bottom: 2rem;
+  text-shadow: 0 1px 5px rgba(0,0,0,.4);
+}
+
+/* Gallery Carousel – Taller */
+.gallery-carousel {
+  position: relative;
+  max-width: 600px;
+  margin: 2rem auto;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.gallery-image {
+  width: 100%;
+  height: auto;
+  max-height: 550px;
+  object-fit: contain;
+  display: block;
+  background: #000;
+}
+
+.gallery-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.3);
+  border: 2px solid white;
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  z-index: 10;
+}
+.gallery-arrow:hover {
+  background: rgba(255, 255, 255, 0.6);
+  transform: translateY(-50%) scale(1.1);
+}
+.gallery-arrow.left { left: 15px; }
+.gallery-arrow.right { right: 15px; }
+.gallery-arrow.left::before { content: 'Left Arrow'; }
+.gallery-arrow.right::before { content: 'Right Arrow'; }
+
+/* === RSVP SECTION – TRANSPARENT WHITE BOX === */
+.rsvp-backdrop {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  padding: 3rem 2rem;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.rsvp-title {
+  font-size: 3rem;
+  font-weight: 300;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0,0,0,.5);
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.rsvp-text {
+  font-size: 1.4rem;
+  color: white;
+  text-shadow: 0 1px 5px rgba(0,0,0,.5);
+  margin-bottom: 2rem;
+}
+
+.whatsapp-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.8rem;
+  background: #25D366;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+.whatsapp-btn:hover {
+  background: #1DA851;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp-btn::before {
+  content: "WhatsApp";
+  font-size: 1.4rem;
+}
+
+/* === GIFTS SECTION – WHITE TEXT + TRANSPARENT BOXES + BACKGROUND === */
+.section-gifts {
+  background: url('./assets/gifts-bg.jpg') center/cover no-repeat;
+  padding: 4rem 2rem;
+}
+
+.gifts-container {
+  max-width: 1000px;
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.gifts-title {
+  font-size: 3.5rem;
+  font-weight: 300;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0,0,0,.5);
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.gifts-grid {
+  display: flex;
+  gap: 3rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.gifts-left,
+.gifts-right {
+  flex: 1;
+  min-width: 300px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  padding: 2.5rem 2rem;
+  border-radius: 0;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  text-align: center;
+}
+
+.gifts-subtitle {
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: white;
+  text-shadow: 0 1px 5px rgba(0,0,0,.5);
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.gifts-text {
+  font-size: 1.3rem;
+  color: white;
+  text-shadow: 0 1px 5px rgba(0,0,0,.5);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+/* Registry & Payment Buttons */
+.registry-buttons,
+.payment-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.registry-btn,
+.payment-btn {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  color: white;
+  border: 2px solid white;
+}
+
+.registry-btn.amazon {
+  background: #FF9900;
+}
+.registry-btn.amazon:hover {
+  background: #E68A00;
+  transform: translateY(-2px);
+}
+
+.registry-btn.macys {
+  background: #EC1C24;
+}
+.registry-btn.macys:hover {
+  background: #C8102E;
+  transform: translateY(-2px);
+}
+
+.payment-btn.zelle {
+  background: #6D1ED4;
+}
+.payment-btn.zelle:hover {
+  background: #5A18B2;
+  transform: translateY(-2px);
+}
+
+.payment-btn.cashapp {
+  background: #00D632;
+}
+.payment-btn.cashapp:hover {
+  background: #00B82A;
+  transform: translateY(-2px);
+}
+
+/* === HOTELS & ATTRACTIONS – WHITE INTRO + ICON ARROWS === */
+.section-intro {
+  font-size: 1.8rem !important;
+  font-weight: 300;
+  color: white !important;
+  text-shadow: 0 2px 10px rgba(0,0,0,.5);
+  margin-bottom: 2rem;
+  max-width: 800px;
+  text-align: center;
+}
+
+/* Scroll Arrows with Icons */
 .scroll-controls {
   position: absolute;
   top: 50%;
@@ -291,7 +601,7 @@ html, body, #root {
 .scroll-arrow {
   width: 50px;
   height: 50px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.3);
   border: 2px solid white;
   border-radius: 50%;
   color: white;
@@ -304,12 +614,21 @@ html, body, #root {
   transition: all 0.3s;
 }
 .scroll-arrow:hover {
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.6);
   transform: scale(1.1);
 }
-.scroll-arrow.left::before { content: '←'; }
-.scroll-arrow.right::before { content: '→'; }
+.scroll-arrow.left { left: 15px; }
+.scroll-arrow.right { right: 15px; }
+.scroll-arrow.left::before { content: 'Left Arrow'; }
+.scroll-arrow.right::before { content: 'Right Arrow'; }
 
+.scrollable-container {
+  max-width: 900px;
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
 .scrollable-grid {
   display: flex;
   gap: 1.5rem;
@@ -318,10 +637,10 @@ html, body, #root {
   padding: 1rem 0;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
 }
 .scrollable-grid::-webkit-scrollbar { display: none; }
 
-/* Compact Cards */
 .scrollable-card {
   flex: 0 0 260px;
   min-width: 260px;
@@ -358,180 +677,117 @@ html, body, #root {
   font-weight: bold;
 }
 
-/* Dress Code Section */
-.dress-code-container {
-  max-width: 900px;
+/* === INSTAGRAM + THANK YOU GRID – TRANSPARENT GLASS === */
+.instagram-grid {
+  display: flex;
+  gap: 3rem;
+  max-width: 1000px;
   width: 90%;
   margin: 0 auto;
-  text-align: center;
-}
-.dress-code-subtitle {
-  margin-bottom: 2.5rem;
-  font-size: 1.2rem;
-  color: white;
-  text-shadow: 0 2px 10px rgba(0,0,0,.5);
-}
-.dress-code-grid {
-  display: flex;
-  gap: 2rem;
   justify-content: center;
+  flex-wrap: wrap;
 }
-.dress-code-card {
+
+.instagram-left,
+.instagram-right {
   flex: 1;
+  min-width: 300px;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(5px);
-  padding: 2rem 1.5rem;
-  border-radius: 0;
+  padding: 2.5rem 2rem;
+  border-radius: 12px;
   border: 2px solid rgba(255, 255, 255, 0.3);
-  min-height: 220px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  color: white;
-  text-align: left;
-}
-.dress-code-label {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 1.2rem;
-  text-transform: uppercase;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
   text-align: center;
-}
-.dress-code-list {
-  list-style: none;
-  padding-left: 1.5rem;
-  font-size: 1.1rem;
-  line-height: 1.8;
   color: white;
+  text-shadow: 0 1px 5px rgba(0,0,0,.5);
 }
-.dress-code-list li {
-  position: relative;
-  margin-bottom: 0.6rem;
-}
-.dress-code-list li::before {
-  content: "•";
-  position: absolute;
-  left: -1.2rem;
+
+.instagram-title,
+.thankyou-title {
+  font-size: 2.5rem;
+  font-weight: 300;
   color: white;
+  text-shadow: 0 1px 5px rgba(0,0,0,.5);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.instagram-hashtag {
+  font-size: 1.4rem;
+  color: white;
+  text-shadow: 0 1px 5px rgba(0,0,0,.5);
+  margin: 1rem 0;
   font-weight: bold;
 }
 
-/* RSVP Form */
-.rsvp-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+.instagram-link {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  background: #E4405F;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 0;
+  transition: all 0.3s;
+}
+.instagram-link:hover {
+  background: #C13554;
+  transform: translateY(-2px);
+}
+
+.thankyou-text {
+  font-size: 1.3rem;
+  color: white;
+  text-shadow: 0 1px 5px rgba(0,0,0,.5);
+  line-height: 1.8;
   max-width: 400px;
   margin: 0 auto;
 }
-.rsvp-form input,
-.rsvp-form select.rsvp-select,
-.rsvp-form button {
-  padding: 1rem;
-  font-size: 1rem;
-  border: 2px solid white;
-  background: rgba(255,255,255,0.1);
-  color: white;
-  border-radius: 0;
-}
-.rsvp-form input::placeholder,
-.rsvp-form select.rsvp-select {
-  color: rgba(255,255,255,0.7);
-}
-.rsvp-form select.rsvp-select {
-  appearance: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-position: right 1rem center;
-  background-size: 12px;
-  cursor: pointer;
-}
-.rsvp-form select.rsvp-select option {
-  color: #333;
-  background: white;
-}
-.rsvp-form select.rsvp-select:focus {
-  outline: none;
-  background-color: rgba(255,255,255,0.2);
-}
-.rsvp-form button {
-  background: white;
-  color: #333;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
-}
-.rsvp-form button:hover {
-  background: rgba(255,255,255,0.9);
-}
 
-/* Responsive */
+/* === RESPONSIVE === */
 @media (max-width: 768px) {
-  .nav-left,
-  .nav-right {
-    display: none;
-  }
-  .hamburger {
-    display: flex;
-  }
-  .section-title {
-    font-size: 2.5rem;
-  }
-  .rsvp-button {
-    top: 100px;
-    font-size: 1.3rem;
-    padding: 0.8rem 2rem;
-  }
-  .rsvp-form {
-    max-width: 320px;
-  }
+  .hamburger { display: flex; }
+  .nav-left, .nav-right { display: none; }
 
-  /* Dress Code Responsive */
-  .dress-code-grid {
+  .section-1 .section-subtitle { font-size: 1.4rem; }
+  .section-1 .section-title { font-size: 2.8rem; }
+  .section-1 .section-date { font-size: 1.6rem; }
+  .home-intro { font-size: 1.1rem; }
+
+  .venue-backdrop,
+  .itinerary-backdrop,
+  .gifts-left,
+  .gifts-right,
+  .instagram-left,
+  .instagram-right {
+    padding: 2rem 1.5rem;
+  }
+  .venue-title,
+  .itinerary-title,
+  .gifts-subtitle,
+  .instagram-title,
+  .thankyou-title { font-size: 2.2rem; }
+  .venue-name { font-size: 1.6rem; }
+  .venue-address { font-size: 1.1rem; }
+  .itinerary-list { font-size: 1.1rem; }
+
+  .gifts-grid,
+  .instagram-grid {
     flex-direction: column;
-    gap: 1.5rem;
-  }
-  .dress-code-card {
-    min-height: auto;
-    padding: 1.5rem;
-  }
-  .dress-code-label {
-    font-size: 1.6rem;
-  }
-  .dress-code-list {
-    font-size: 1rem;
-    padding-left: 1.2rem;
-  }
-  .dress-code-list li::before {
-    left: -1rem;
+    align-items: center;
   }
 
-  /* Menu Responsive */
-  .menu-container {
-    margin-top: 80px;
-  }
-  .menu-container,
-  .scrollable-container {
-    width: 95%;
-    padding: 1.5rem 0.5rem;
-  }
-  .subsection-title {
-    font-size: 1.6rem;
-  }
   .scrollable-card {
-    flex: 0 0 75%;
-    min-width: 75%;
-    padding: 1.2rem 1rem;
+    flex: 0 0 calc(100% - 2rem) !important;
+    min-width: calc(100% - 2rem) !important;
+    max-width: calc(100% - 2rem) !important;
   }
-  .scrollable-label {
-    font-size: 1.3rem;
-  }
-  .scrollable-list {
-    font-size: 0.95rem;
-  }
-  .scroll-arrow {
-    width: 40px;
-    height: 40px;
-    font-size: 1.2rem;
-  }
+
+  .dress-code-header { font-size: 2.2rem; }
+  .gallery-text { font-size: 1.1rem; }
+  .gallery-carousel { max-width: 100%; }
+  .gallery-arrow,
+  .scroll-arrow { width: 40px; height: 40px; font-size: 1.2rem; }
 }
