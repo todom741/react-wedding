@@ -79,10 +79,10 @@ const translations: Record<Lang, Translation> = {
     viewOnMaps: 'View on Google Maps',
 
     itineraryItems: [
-      '3:00 PM – Ceremony',
-      '4:30 PM – Cocktail Hour',
-      '5:30 PM – Reception & Dinner',
-      '9:00 PM – Dancing & Celebration',
+      '12:00 PM – Arrivals',
+      '12:30 PM – Ceremony',
+      '1:30 PM – Reception',
+      '4:00 PM – Venue Ends',
     ],
 
     dressCodeHeader: 'Dress Code',
