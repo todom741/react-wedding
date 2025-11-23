@@ -105,7 +105,7 @@ const translations: Record<Lang, Translation> = {
     zelleEmail: 'zelle@example.com',
     cashAppTag: '$EdnaTyler',
 
-    hotelsIntro: 'Recommended hotels near the venue in Atlanta, GA.',
+    hotelsIntro: 'HOTELS',
     hotel1: 'The Ritz-Carlton, Atlanta',
     hotel1Desc: ['Luxury downtown hotel', 'Walking distance to venues', 'Spa & fine dining', '5-star service'],
     hotel2: 'InterContinental Buckhead Atlanta',
@@ -115,7 +115,7 @@ const translations: Record<Lang, Translation> = {
     hotel4: 'W Atlanta - Midtown',
     hotel4Desc: ['Modern boutique hotel', 'Rooftop bar with views', 'Pet-friendly', 'Central location'],
 
-    attractionsIntro: 'Top attractions to explore in Atlanta, GA.',
+    attractionsIntro: 'ATTRACTIONS IN ATL',
     attr1: 'Georgia Aquarium',
     attr1Desc: ["World's largest aquarium", 'Whale sharks & dolphins', 'Ocean Voyager exhibit', 'Family-friendly'],
     attr2: 'World of Coca-Cola',
@@ -166,7 +166,7 @@ const translations: Record<Lang, Translation> = {
     zelleEmail: 'zelle@example.com',
     cashAppTag: '$EdnaTyler',
 
-    hotelsIntro: 'Hoteles recomendados cerca del lugar en Atlanta, GA.',
+    hotelsIntro: 'HOTELES',
     hotel1: 'The Ritz-Carlton, Atlanta',
     hotel1Desc: ['Hotel de lujo en el centro', 'A poca distancia caminando', 'Spa y restaurante gourmet', 'Servicio 5 estrellas'],
     hotel2: 'InterContinental Buckhead Atlanta',
@@ -176,7 +176,7 @@ const translations: Record<Lang, Translation> = {
     hotel4: 'W Atlanta - Midtown',
     hotel4Desc: ['Hotel boutique moderno', 'Bar en la azotea con vistas', 'Admite mascotas', 'Ubicación central'],
 
-    attractionsIntro: 'Principales atracciones para explorar en Atlanta, GA.',
+    attractionsIntro: 'ATRACIONES EN ATL',
     attr1: 'Acuario de Georgia',
     attr1Desc: ['El acuario más grande del mundo', 'Tiburones ballena y delfines', 'Exhibición Ocean Voyager', 'Ideal para familias'],
     attr2: 'Mundo de Coca-Cola',
