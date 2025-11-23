@@ -84,10 +84,10 @@ const translations: Record<Lang, Translation> = {
     viewOnMaps: 'View on Google Maps',
 
     itineraryItems: [
-      '12:00 PM – Arrivals',
-      '12:30 PM – Ceremony',
-      '1:30 PM – Reception',
-      '4:00 PM – Venue Ends',
+      '12:00 PM – Guest Arrival and Welcome',
+      '12:30 PM – Ceremony Begins',
+      '1:00 PM – Reception',
+      '4:00 PM – Celebration Ends',
     ],
 
     mealsText: "We're happy to share that the venue will be offering a la carte meals for all our wonderful guests. During the first two weeks of March 2026, we'll reach out to share the seasonal menu and kindly ask for your meal choices.",
@@ -145,10 +145,10 @@ const translations: Record<Lang, Translation> = {
     viewOnMaps: 'Ver en Google Maps',
 
     itineraryItems: [
-      '3:00 PM – Ceremonia',
-      '4:30 PM – Hora del cóctel',
-      '5:30 PM – Recepción y cena',
-      '9:00 PM – Baile y celebración',
+      '12:00 PM – Llegada de los invitados',
+      '12:30 PM – Comienza la ceremonia',
+      '1:00 PM – Recepción',
+      '4:00 PM – Finaliza la celebración',
     ],
 
     mealsText: 'Nos complace compartir que el lugar ofrecerá comidas a la carta para todos nuestros maravillosos invitados. Durante las primeras dos semanas de marzo de 2026, nos pondremos en contacto para compartir el menú de temporada y pedir amablemente sus elecciones de comida.',
