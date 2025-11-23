@@ -7,6 +7,7 @@ interface Translation {
   home: string;
   venue: string;
   itinerary: string;
+  meals: string;           // ← NEW
   dressCode: string;
   rsvp: string;
   gifts: string;
@@ -24,6 +25,9 @@ interface Translation {
 
   // Itinerary
   itineraryItems: string[];
+
+  // Meals ← NEW
+  mealsText: string;
 
   // Dress Code
   dressCodeHeader: string;
@@ -64,6 +68,7 @@ const translations: Record<Lang, Translation> = {
     home: 'Home',
     venue: 'Venue',
     itinerary: 'Itinerary',
+    meals: 'Meals',                                      // ← NEW
     dressCode: 'Dress Code',
     rsvp: 'RSVP',
     gifts: 'Gifts',
@@ -84,6 +89,8 @@ const translations: Record<Lang, Translation> = {
       '1:30 PM – Reception',
       '4:00 PM – Venue Ends',
     ],
+
+    mealsText: "We're happy to share that the venue will be offering a la carte meals for all our wonderful guests. During the first two weeks of March 2026, we'll reach out to share the seasonal menu and kindly ask for your meal choices.",
 
     dressCodeHeader: 'Dress Code',
     dressCodeGalleryText: 'Please check the gallery for ideas.',
@@ -110,11 +117,11 @@ const translations: Record<Lang, Translation> = {
 
     attractionsIntro: 'Top attractions to explore in Atlanta, GA.',
     attr1: 'Georgia Aquarium',
-    attr1Desc: ['World\'s largest aquarium', 'Whale sharks & dolphins', 'Ocean Voyager exhibit', 'Family-friendly'],
+    attr1Desc: ["World's largest aquarium", 'Whale sharks & dolphins', 'Ocean Voyager exhibit', 'Family-friendly'],
     attr2: 'World of Coca-Cola',
     attr2Desc: ['Interactive museum', 'Taste 100+ sodas', 'Vault of the Secret Formula', 'Downtown Atlanta'],
     attr3: 'Piedmont Park',
-    attr3Desc: ['Atlanta\'s Central Park', 'Walking trails', 'Dog park & lake', 'Free concerts'],
+    attr3Desc: ["Atlanta's Central Park", 'Walking trails', 'Dog park & lake', 'Free concerts'],
     attr4: 'Atlanta Botanical Garden',
     attr4Desc: ['30 acres of gardens', 'Orchid center', 'Canopy walk', 'Seasonal exhibits'],
   },
@@ -122,6 +129,7 @@ const translations: Record<Lang, Translation> = {
     home: 'Inicio',
     venue: 'Lugar',
     itinerary: 'Itinerario',
+    meals: 'Comidas',                                     // ← NEW
     dressCode: 'Código de Vestimenta',
     rsvp: 'RSVP',
     gifts: 'Regalos',
@@ -142,6 +150,8 @@ const translations: Record<Lang, Translation> = {
       '5:30 PM – Recepción y cena',
       '9:00 PM – Baile y celebración',
     ],
+
+    mealsText: 'Nos complace compartir que el lugar ofrecerá comidas a la carta para todos nuestros maravillosos invitados. Durante las primeras dos semanas de marzo de 2026, nos pondremos en contacto para compartir el menú de temporada y pedir amablemente sus elecciones de comida.',
 
     dressCodeHeader: 'Código de Vestimenta',
     dressCodeGalleryText: 'Por favor revisa la galería para ideas.',
@@ -189,6 +199,7 @@ function App() {
   const homeRef = useRef<HTMLDivElement | null>(null);
   const venueRef = useRef<HTMLDivElement | null>(null);
   const itineraryRef = useRef<HTMLDivElement | null>(null);
+  const mealsRef = useRef<HTMLDivElement | null>(null);          // ← NEW
   const dressCodeRef = useRef<HTMLDivElement | null>(null);
   const rsvpRef = useRef<HTMLDivElement | null>(null);
   const giftsRef = useRef<HTMLDivElement | null>(null);
@@ -215,7 +226,7 @@ function App() {
     });
   };
 
-  // === Dress Code Gallery Images (8 images) ===
+  // === Dress Code Gallery Images ===
   const galleryImages = [
     './assets/dress1.jpg',
     './assets/dress2.jpg',
@@ -239,6 +250,7 @@ function App() {
     { label: t.home, ref: homeRef },
     { label: t.venue, ref: venueRef },
     { label: t.itinerary, ref: itineraryRef },
+    { label: t.meals, ref: mealsRef },           // ← NEW
     { label: t.dressCode, ref: dressCodeRef },
     { label: t.rsvp, ref: rsvpRef },
     { label: t.gifts, ref: giftsRef },
@@ -347,13 +359,22 @@ function App() {
         </div>
       </section>
 
+      {/* NEW: Meals Section */}
+      <section ref={mealsRef} className="section section-meals">
+        <div className="meals-container">
+          <h1 className="meals-title">{t.meals}</h1>
+          <div className="meals-content">
+            <p className="meals-text">{t.mealsText}</p>
+          </div>
+        </div>
+      </section>
+
       {/* Section 4 – Dress Code */}
       <section ref={dressCodeRef} className="section section-3">
         <div className="dress-code-container">
           <h1 className="dress-code-header">{t.dressCodeHeader}</h1>
           <p className="gallery-text">{t.dressCodeGalleryText}</p>
 
-          {/* Gallery Carousel */}
           <div className="gallery-carousel">
             <button className="gallery-arrow left" onClick={prevImage} />
             <img
@@ -373,20 +394,10 @@ function App() {
             <h1 className="rsvp-title">{t.rsvp}</h1>
             <p className="rsvp-text">{t.contactText}</p>
             <div className="whatsapp-links">
-              <a
-                href={`https://wa.me/${t.ednaPhone.replace(/[^0-9]/g, '')}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="whatsapp-btn"
-              >
+              <a href={`https://wa.me/${t.ednaPhone.replace(/[^0-9]/g, '')}`} target="_blank" rel="noopener noreferrer" className="whatsapp-btn">
                 Edna
               </a>
-              <a
-                href={`https://wa.me/${t.tylerPhone.replace(/[^0-9]/g, '')}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="whatsapp-btn"
-              >
+              <a href={`https://wa.me/${t.tylerPhone.replace(/[^0-9]/g, '')}`} target="_blank" rel="noopener noreferrer" className="whatsapp-btn">
                 Tyler
               </a>
             </div>
@@ -394,28 +405,23 @@ function App() {
         </div>
       </section>
 
-      {/* Section 6 – Gifts */}
+      {/* Section 6 – Gifts (Combined as requested) */}
       <section ref={giftsRef} className="section section-gifts">
         <div className="gifts-container">
           <h1 className="gifts-title">{t.gifts}</h1>
-          <div className="gifts-grid">
-            <div className="gifts-left">
-              <h2 className="gifts-subtitle">{t.registryText}</h2>
-              <div className="registry-buttons">
-                <a href="https://amazon.com/registry" target="_blank" rel="noopener noreferrer" className="registry-btn amazon">
-                  Amazon
-                </a>
-                <a href="https://macys.com/registry" target="_blank" rel="noopener noreferrer" className="registry-btn macys">
-                  Macy's
-                </a>
-              </div>
+          <div className="gifts-combined">
+            <div className="registry-buttons-centered">
+              <a href="https://amazon.com/registry" target="_blank" rel="noopener noreferrer" className="registry-btn amazon">
+                Amazon
+              </a>
+              <a href="https://macys.com/registry" target="_blank" rel="noopener noreferrer" className="registry-btn macys">
+                Macy's
+              </a>
             </div>
-            <div className="gifts-right">
-              <p className="gifts-text">{t.zelleCashAppText}</p>
-              <div className="payment-links">
-                <a href={`mailto:${t.zelleEmail}`} className="payment-btn zelle">Zelle</a>
-                <a href={`https://cash.app/${t.cashAppTag}`} target="_blank" rel="noopener noreferrer" className="payment-btn cashapp">CashApp</a>
-              </div>
+            <p className="gifts-text">{t.zelleCashAppText}</p>
+            <div className="payment-links">
+              <a href={`mailto:${t.zelleEmail}`} className="payment-btn zelle">Zelle</a>
+              <a href={`https://cash.app/${t.cashAppTag}`} target="_blank" rel="noopener noreferrer" className="payment-btn cashapp">CashApp</a>
             </div>
           </div>
         </div>
@@ -474,7 +480,7 @@ function App() {
             <h2 className="instagram-title">{t.instagram}</h2>
             <p className="instagram-hashtag">#EdnaAndTyler2026</p>
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="instagram-link">
-              Follow on Instagram
+              Tag us on Instagram
             </a>
           </div>
           <div className="instagram-right">
