@@ -84,7 +84,7 @@ const translations: Record<Lang, Translation> = {
     viewOnMaps: 'View on Google Maps',
 
     itineraryItems: [
-      '12:00 PM – Guest Arrival and Welcome',
+      '12:00 PM – Guest Arrival',
       '12:30 PM – Ceremony Begins',
       '1:00 PM – Reception',
       '4:00 PM – Celebration Ends',
