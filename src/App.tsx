@@ -97,13 +97,13 @@ const translations: Record<Lang, Translation> = {
 
     rsvpText: 'Please contact for confirmation and menu',
     contactText: 'Please contact for confirmation and menu',
-    ednaPhone: '+1 (555) 123-4567',
-    tylerPhone: '+1 (555) 987-6543',
+    ednaPhone: '+1 (478) 258-2636',
+    tylerPhone: '+1 (404) 227-3148',
 
     registryText: 'Wedding Registry',
     zelleCashAppText: 'Your presence is the greatest gift. If you wish to contribute, a honeymoon fund would be appreciated.',
-    zelleEmail: 'zelle@example.com',
-    cashAppTag: '$EdnaTyler',
+    zelleEmail: 'ednagarcia.mx@gmail.com',
+    cashAppTag: '$todom741',
 
     hotelsIntro: 'HOTELS',
     hotel1: 'The Ritz-Carlton, Atlanta',
