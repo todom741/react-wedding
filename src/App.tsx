@@ -417,10 +417,10 @@ function App() {
           <div className="gifts-combined">
             <h1 className="gifts-title">{t.gifts}</h1>
             <div className="registry-buttons-centered">
-              <a href="https://amazon.com/registry" target="_blank" rel="noopener noreferrer" className="registry-btn amazon">
+              <a href="https://amazon.com/wedding/registry/3MSHUXWMQO7K0" target="_blank" rel="noopener noreferrer" className="registry-btn amazon">
                 Amazon
               </a>
-              <a href="https://macys.com/registry" target="_blank" rel="noopener noreferrer" className="registry-btn macys">
+              <a href="https://www.macys.com/registry/Tyler-Odom-Edna-Garcia/1270006" target="_blank" rel="noopener noreferrer" className="registry-btn macys">
                 Macy's
               </a>
             </div>
