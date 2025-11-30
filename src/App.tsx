@@ -7,7 +7,7 @@ interface Translation {
   home: string;
   venue: string;
   itinerary: string;
-  meals: string;           // ← NEW
+  meals: string;
   dressCode: string;
   rsvp: string;
   gifts: string;
@@ -26,7 +26,7 @@ interface Translation {
   // Itinerary
   itineraryItems: string[];
 
-  // Meals ← NEW
+  // Meals
   mealsText: string;
 
   // Dress Code
@@ -51,6 +51,7 @@ interface Translation {
   hotel2: string; hotel2Desc: string[];
   hotel3: string; hotel3Desc: string[];
   hotel4: string; hotel4Desc: string[];
+  hotel5: string; hotel5Desc: string[];  // ← NEW
 
   // Attractions
   attractionsIntro: string;
@@ -68,7 +69,7 @@ const translations: Record<Lang, Translation> = {
     home: 'Home',
     venue: 'Venue',
     itinerary: 'Itinerary',
-    meals: 'Meals',                                      // ← NEW
+    meals: 'Meals',
     dressCode: 'Dress Code',
     rsvp: 'RSVP',
     gifts: 'Gifts',
@@ -106,14 +107,16 @@ const translations: Record<Lang, Translation> = {
     cashAppTag: '$todom741',
 
     hotelsIntro: 'HOTELS',
-    hotel1: 'The Ritz-Carlton, Atlanta',
-    hotel1Desc: ['Luxury downtown hotel', 'Walking distance to venues', 'Spa & fine dining', '5-star service'],
-    hotel2: 'InterContinental Buckhead Atlanta',
-    hotel2Desc: ['Upscale Buckhead location', 'Rooftop pool', 'Award-winning restaurant', 'Complimentary shuttle'],
-    hotel3: 'The Whitley, a Luxury Collection Hotel',
-    hotel3Desc: ['Historic luxury in Buckhead', 'Elegant rooms', 'Southern cuisine', 'Event spaces'],
-    hotel4: 'W Atlanta - Midtown',
-    hotel4Desc: ['Modern boutique hotel', 'Rooftop bar with views', 'Pet-friendly', 'Central location'],
+    hotel1: 'Hotel Colee, Atlanta Buckhead',
+    hotel1Desc: ['✨ Newly renovated luxury', 'Rooftop pool & bar', 'Central Buckhead location', 'Valet parking'],
+    hotel2: 'Residence Inn Atlanta Buckhead',
+    hotel2Desc: ['🛏️ Free breakfast included', 'Full kitchens in rooms', 'Extended stay friendly', 'Fitness center'],
+    hotel3: 'Hampton Inn & Suites Atlanta Buckhead Palace',
+    hotel3Desc: ['🏨 Free hot breakfast', 'Indoor pool', 'Close to restaurants', 'Free WiFi'],
+    hotel4: 'Courtyard Atlanta Buckhead',
+    hotel4Desc: ['📍 Walking distance to venues', 'Modern rooms', 'Bistro restaurant', 'Fitness center'],
+    hotel5: 'Hyatt Place Atlanta/Buckhead',
+    hotel5Desc: ['🌟 Free breakfast', 'Outdoor pool', 'Pet-friendly', '24-hour fitness'],
 
     attractionsIntro: 'ATTRACTIONS IN ATL',
     attr1: 'Georgia Aquarium',
@@ -129,7 +132,7 @@ const translations: Record<Lang, Translation> = {
     home: 'Inicio',
     venue: 'Lugar',
     itinerary: 'Itinerario',
-    meals: 'Comidas',                                     // ← NEW
+    meals: 'Comidas',
     dressCode: 'Código de Vestimenta',
     rsvp: 'RSVP',
     gifts: 'Regalos',
@@ -158,23 +161,25 @@ const translations: Record<Lang, Translation> = {
 
     rsvpText: 'Por favor contacta para confirmación y menú',
     contactText: 'Por favor contacta para confirmación y menú',
-    ednaPhone: '+1 (555) 123-4567',
-    tylerPhone: '+1 (555) 987-6543',
+    ednaPhone: '+1 (478) 258-2636',
+    tylerPhone: '+1 (404) 227-3148',
 
     registryText: 'Registro de Bodas',
     zelleCashAppText: 'Tu presencia es el mejor regalo. Si deseas contribuir, un fondo para la luna de miel sería muy apreciado.',
-    zelleEmail: 'zelle@example.com',
-    cashAppTag: '$EdnaTyler',
+    zelleEmail: 'ednagarcia.mx@gmail.com',
+    cashAppTag: '$todom741',
 
     hotelsIntro: 'HOTELES',
-    hotel1: 'The Ritz-Carlton, Atlanta',
-    hotel1Desc: ['Hotel de lujo en el centro', 'A poca distancia caminando', 'Spa y restaurante gourmet', 'Servicio 5 estrellas'],
-    hotel2: 'InterContinental Buckhead Atlanta',
-    hotel2Desc: ['Ubicación exclusiva en Buckhead', 'Piscina en la azotea', 'Restaurante premiado', 'Servicio de traslado gratuito'],
-    hotel3: 'The Whitley, un Hotel de Lujo',
-    hotel3Desc: ['Lujo histórico en Buckhead', 'Habitaciones elegantes', 'Cocina sureña', 'Espacios para eventos'],
-    hotel4: 'W Atlanta - Midtown',
-    hotel4Desc: ['Hotel boutique moderno', 'Bar en la azotea con vistas', 'Admite mascotas', 'Ubicación central'],
+    hotel1: 'Hotel Colee, Atlanta Buckhead',
+    hotel1Desc: ['✨ Lujo recién renovado', 'Piscina y bar en azotea', 'Ubicación céntrica en Buckhead', 'Estacionamiento con valet'],
+    hotel2: 'Residence Inn Atlanta Buckhead',
+    hotel2Desc: ['🛏️ Desayuno gratis incluido', 'Cocinas completas en habitaciones', 'Ideal para estancias largas', 'Centro de fitness'],
+    hotel3: 'Hampton Inn & Suites Atlanta Buckhead Palace',
+    hotel3Desc: ['🏨 Desayuno caliente gratis', 'Piscina interior', 'Cerca de restaurantes', 'WiFi gratis'],
+    hotel4: 'Courtyard Atlanta Buckhead',
+    hotel4Desc: ['📍 A poca distancia caminando', 'Habitaciones modernas', 'Restaurante bistro', 'Centro de fitness'],
+    hotel5: 'Hyatt Place Atlanta/Buckhead',
+    hotel5Desc: ['🌟 Desayuno gratis', 'Piscina al aire libre', 'Admite mascotas', 'Fitness 24 horas'],
 
     attractionsIntro: 'ATRACIONES EN ATL',
     attr1: 'Acuario de Georgia',
@@ -199,7 +204,7 @@ function App() {
   const homeRef = useRef<HTMLDivElement | null>(null);
   const venueRef = useRef<HTMLDivElement | null>(null);
   const itineraryRef = useRef<HTMLDivElement | null>(null);
-  const mealsRef = useRef<HTMLDivElement | null>(null);          // ← NEW
+  const mealsRef = useRef<HTMLDivElement | null>(null);
   const dressCodeRef = useRef<HTMLDivElement | null>(null);
   const rsvpRef = useRef<HTMLDivElement | null>(null);
   const giftsRef = useRef<HTMLDivElement | null>(null);
@@ -250,7 +255,7 @@ function App() {
     { label: t.home, ref: homeRef },
     { label: t.venue, ref: venueRef },
     { label: t.itinerary, ref: itineraryRef },
-    { label: t.meals, ref: mealsRef },           // ← NEW
+    { label: t.meals, ref: mealsRef },
     { label: t.dressCode, ref: dressCodeRef },
     { label: t.rsvp, ref: rsvpRef },
     { label: t.gifts, ref: giftsRef },
@@ -294,11 +299,15 @@ function App() {
       {/* Mobile Menu */}
       <div className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>
         <div className="mobile-menu-content" onClick={(e) => e.stopPropagation()}>
-          {navItems.map((item) => (
-            <button key={item.label} className="mobile-nav-item" onClick={() => scrollTo(item.ref)}>
-              {item.label}
-            </button>
-          ))}
+          {/* Scrollable Navigation Items */}
+          <div className="mobile-nav-scrollable">
+            {navItems.map((item) => (
+              <button key={item.label} className="mobile-nav-item" onClick={() => scrollTo(item.ref)}>
+                {item.label}
+              </button>
+            ))}
+          </div>
+          {/* Fixed Language Buttons at Bottom */}
           <div className="mobile-lang-group">
             <button className={`mobile-lang-btn ${lang === 'en' ? 'active' : ''}`} onClick={() => { setLang('en'); setIsMobileMenuOpen(false); }}>
               English
@@ -359,22 +368,19 @@ function App() {
         </div>
       </section>
 
-      {/* NEW: Meals Section */}
+      {/* Meals Section - TITLE INSIDE WHITE BOX */}
       <section ref={mealsRef} className="section section-meals">
         <div className="meals-container">
-          <h1 className="meals-title">{t.meals}</h1>
           <div className="meals-content">
+            <h1 className="meals-title">{t.meals}</h1>
             <p className="meals-text">{t.mealsText}</p>
           </div>
         </div>
       </section>
 
-      {/* Section 4 – Dress Code */}
+      {/* Dress Code Section - NO HEADER, ONLY GALLERY */}
       <section ref={dressCodeRef} className="section section-3">
         <div className="dress-code-container">
-          <h1 className="dress-code-header">{t.dressCodeHeader}</h1>
-          <p className="gallery-text">{t.dressCodeGalleryText}</p>
-
           <div className="gallery-carousel">
             <button className="gallery-arrow left" onClick={prevImage} />
             <img
@@ -405,11 +411,11 @@ function App() {
         </div>
       </section>
 
-      {/* Section 6 – Gifts (Combined as requested) */}
+      {/* Section 6 – Gifts - TITLE INSIDE WHITE BOX */}
       <section ref={giftsRef} className="section section-gifts">
         <div className="gifts-container">
-          <h1 className="gifts-title">{t.gifts}</h1>
           <div className="gifts-combined">
+            <h1 className="gifts-title">{t.gifts}</h1>
             <div className="registry-buttons-centered">
               <a href="https://amazon.com/registry" target="_blank" rel="noopener noreferrer" className="registry-btn amazon">
                 Amazon
@@ -427,7 +433,7 @@ function App() {
         </div>
       </section>
 
-      {/* Section 7 – Hotels */}
+      {/* Section 7 – Hotels - 5 NEW HOTELS */}
       <section ref={hotelsRef} className="section section-4">
         <div className="scrollable-container">
           <p className="section-intro">{t.hotelsIntro}</p>
@@ -436,16 +442,55 @@ function App() {
             <button className="scroll-arrow right" onClick={() => scrollHorizontal(hotelsScrollRef.current, 'right')} />
           </div>
           <div className="scrollable-grid" ref={hotelsScrollRef}>
-            {[t.hotel1, t.hotel2, t.hotel3, t.hotel4].map((title, i) => (
-              <div key={title} className="scrollable-card">
-                <h2 className="scrollable-label">{title}</h2>
-                <ul className="scrollable-list">
-                  {(t[`hotel${i + 1}Desc` as keyof Translation] as string[]).map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+            {/* Hotel 1 */}
+            <div className="scrollable-card">
+              <h2 className="scrollable-label">{t.hotel1}</h2>
+              <ul className="scrollable-list">
+                {t.hotel1Desc.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
+            </div>
+            
+            {/* Hotel 2 */}
+            <div className="scrollable-card">
+              <h2 className="scrollable-label">{t.hotel2}</h2>
+              <ul className="scrollable-list">
+                {t.hotel2Desc.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
+            </div>
+            
+            {/* Hotel 3 */}
+            <div className="scrollable-card">
+              <h2 className="scrollable-label">{t.hotel3}</h2>
+              <ul className="scrollable-list">
+                {t.hotel3Desc.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
+            </div>
+            
+            {/* Hotel 4 */}
+            <div className="scrollable-card">
+              <h2 className="scrollable-label">{t.hotel4}</h2>
+              <ul className="scrollable-list">
+                {t.hotel4Desc.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
+            </div>
+            
+            {/* Hotel 5 - NEW */}
+            <div className="scrollable-card">
+              <h2 className="scrollable-label">{t.hotel5}</h2>
+              <ul className="scrollable-list">
+                {t.hotel5Desc.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>
