@@ -352,21 +352,25 @@ function App() {
         </div>
       </section>
 
-      {/* Section 3 – Itinerary */}
-      <section ref={itineraryRef} className="section section-itinerary">
-        <div className="itinerary-backdrop">
-          <div className="section-content">
-            <h2 className="itinerary-title">
-              {lang === 'en' ? 'Itinerary' : 'Itinerario'}
-            </h2>
-            <ul className="itinerary-list">
-              {t.itineraryItems.map((item, i) => (
-                <li key={i}>{item}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
+{/* Section 3 – Itinerary */}
+<section ref={itineraryRef} className="section section-itinerary">
+  <div className="itinerary-backdrop">
+    <div className="section-content">
+      <h2 className="itinerary-title">
+        {lang === 'en' ? 'Itinerary' : 'Itinerario'}
+      </h2>
+      
+      {/* Replaced list with image */}
+      <div className="itinerary-image-container">
+        <img 
+          src="/assets/itinerary.jpeg" 
+          alt="Wedding Itinerary" 
+          className="itinerary-image"
+        />
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Meals Section - TITLE INSIDE WHITE BOX */}
       <section ref={mealsRef} className="section section-meals">
