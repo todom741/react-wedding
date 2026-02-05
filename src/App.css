@@ -265,7 +265,7 @@ html, body, #root {
   opacity: 0.95; 
 }
 
-/* === VENUE – Fully restored white box === */
+/* === VENUE === */
 .venue-backdrop {
   background: rgba(255, 255, 255, 0.92);
   padding: 3rem 2rem;
@@ -310,88 +310,80 @@ html, body, #root {
   transform: translateY(-2px); 
 }
 
-/* === ITINERARY – Fully restored white box with border === */
 /* === ITINERARY – TRANSPARENT GLASS STYLE === */
 .itinerary-backdrop {
-  background: rgba(255, 255, 255, 0.15);        /* ← TRANSPARENT */
-  backdrop-filter: blur(15px);                  /* ← FROSTED GLASS */
-  padding: 3rem 2rem;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  padding: 4rem 2rem;
   border-radius: 12px;
   max-width: 600px;
   width: 90%;
   text-align: center;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);   /* ← GLOWING EDGE */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 40vh;
 }
 
 .itinerary-title { 
   font-size: 2.8rem; 
   font-weight: 300; 
-  color: black;                             /* ← WHITE TEXT */
-  margin-bottom: 2rem; 
+  color: black;
+  margin-bottom: 1.5rem;
   text-transform: uppercase; 
   letter-spacing: 2px; 
 }
 
-.itinerary-list { 
-  list-style: none; 
-  font-size: 1.3rem; 
-  color: black;                             /* ← WHITE TEXT */
-  line-height: 2.2; 
-  text-align: left; 
-  max-width: 500px; 
-  margin: 0 auto; 
+.itinerary-tbd {
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: black;
+  text-align: center;
+  margin-top: 2rem;
+  line-height: 1.4;
+  opacity: 0.9;
+  letter-spacing: 1px;
 }
 
-.itinerary-list li { 
-  display: flex; 
-  justify-content: space-between; 
-  padding: 0.5rem 0; 
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* ← TRANSPARENT BORDER */
+.itinerary-tbd::before {
+  content: "— ";
+  opacity: 0.6;
+}
+.itinerary-tbd::after {
+  content: " —";
+  opacity: 0.6;
 }
 
-.itinerary-list li:last-child { 
-  border-bottom: none; 
-}
-
-/* === MEALS SECTION – MOVED TITLE INSIDE === */
-.section-meals {
-  background: url('./assets/background3.jpg') center/cover no-repeat;
-  padding: 4rem 2rem;
-}
-.meals-container { 
-  max-width: 1000px; 
-  width: 90%; 
-  margin: 0 auto; 
-  text-align: center; 
-}
-/* === MEALS SECTION – TRANSPARENT BOX === */
+/* === MEALS SECTION === */
 .meals-content { 
   max-width: 800px; 
   margin: 0 auto; 
-  background: rgba(255, 255, 255, 0.15); /* ← TRANSPARENT (was: white) */
-  backdrop-filter: blur(15px);           /* ← STRONGER blur for glass effect */
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
   padding: 3rem 2.5rem; 
-  border-radius: 12px;                    /* ← Added subtle rounded corners */
-  border: 1px solid rgba(255, 255, 255, 0.3); /* ← Subtle border */
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   text-align: center; 
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); /* ← Soft shadow */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 .meals-title { 
   font-size: 3.5rem; 
   font-weight: 300; 
-  color: black;                          /* ← WHITE text for contrast */
+  color: black;
   margin-bottom: 2rem; 
   text-transform: uppercase; 
   letter-spacing: 2px; 
 }
 .meals-text { 
   font-size: 1.4rem; 
-  color: black;                          /* ← WHITE text for contrast */
+  color: black;
   line-height: 1.9; 
 }
 
-/* === DRESS CODE – REMOVED GALLERY TEXT === */
+/* === DRESS CODE === */
 .dress-code-container { 
   max-width: 900px; 
   width: 90%; 
@@ -403,17 +395,17 @@ html, body, #root {
   font-size: 2.8rem; 
   font-weight: 300; 
   color: black; 
-  margin-bottom: 2rem; /* Increased spacing since text removed */
+  margin-bottom: 2rem;
   text-transform: uppercase; 
   letter-spacing: 2px; 
 }
 .gallery-text {
-  display: none; /* REMOVED - No more "Please check the gallery..." text */
+  display: none;
 }
 .gallery-carousel { 
   position: relative; 
   max-width: 600px; 
-  margin: 0 auto; /* Full centering since text removed */
+  margin: 0 auto;
   overflow: hidden; 
   border-radius: 12px; 
   box-shadow: 0 10px 30px rgba(0,0,0,0.3); 
@@ -448,36 +440,32 @@ html, body, #root {
   background: rgba(255,255,255,0.6); 
   transform: translateY(-50%) scale(1.1); 
 }
-.gallery-arrow.left { 
-  left: 15px; 
-}
-.gallery-arrow.right { 
-  right: 15px; 
-}
+.gallery-arrow.left { left: 15px; }
+.gallery-arrow.right { right: 15px; }
 
-/* === RSVP – Fully restored transparent glass style === */
+/* === RSVP === */
 .rsvp-backdrop {
-  background: rgba(255, 255, 255, 0.15);        /* ← TRANSPARENT */
-  backdrop-filter: blur(15px);                  /* ← FROSTED GLASS */
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
   padding: 3rem 2rem;
   border-radius: 12px;
   max-width: 600px;
   width: 90%;
   text-align: center;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);   /* ← GLOWING EDGE */
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 .rsvp-title { 
   font-size: 3rem; 
   font-weight: 300; 
-  color: black;                             /* ← WHITE TEXT */
+  color: black;
   margin-bottom: 1.5rem; 
   text-transform: uppercase; 
   letter-spacing: 2px; 
 }
 .rsvp-text { 
   font-size: 1.4rem; 
-  color: black;                             /* ← WHITE TEXT */
+  color: black;
   margin-bottom: 2rem; 
 }
 .whatsapp-links { 
@@ -505,40 +493,29 @@ html, body, #root {
   box-shadow: 0 8px 20px rgba(37,211,102,0.4); 
 }
 
-/* === GIFTS SECTION – MOVED TITLE INSIDE === */
-.section-gifts { 
-  background: url('./assets/background3.jpg') center/cover no-repeat; 
-  padding: 4rem 2rem; 
-}
-.gifts-container { 
-  max-width: 1000px; 
-  width: 90%; 
-  margin: 0 auto; 
-  text-align: center; 
-}
-/* === GIFTS SECTION – TRANSPARENT GLASS === */
+/* === GIFTS === */
 .gifts-combined { 
   max-width: 700px; 
   margin: 0 auto; 
-  background: rgba(255, 255, 255, 0.15);    /* ← TRANSPARENT */
-  backdrop-filter: blur(15px);               /* ← FROSTED GLASS */
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
   padding: 3rem 2.5rem; 
-  border-radius: 12px;                       /* ← ROUNDED CORNERS */
-  border: 1px solid rgba(255, 255, 255, 0.3); /* ← GLOWING EDGE */
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   text-align: center; 
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 .gifts-title { 
   font-size: 3.5rem; 
   font-weight: 300; 
-  color: black;                             /* ← WHITE TEXT */
+  color: black;
   margin-bottom: 3rem; 
   text-transform: uppercase; 
   letter-spacing: 2px; 
 }
 .gifts-text { 
   font-size: 1.3rem; 
-  color: black;                             /* ← WHITE TEXT */
+  color: black;
   line-height: 1.8; 
   margin-bottom: 2rem; 
 }
@@ -556,7 +533,6 @@ html, body, #root {
   flex-wrap: wrap; 
 }
 
-/* Buttons */
 .registry-btn, .payment-btn {
   display: inline-block; 
   padding: 0.8rem 2rem; 
@@ -568,34 +544,14 @@ html, body, #root {
   color: white; 
   border: 2px solid white;
 }
-.registry-btn.amazon { 
-  background: #FF9900; 
-}
-.registry-btn.amazon:hover { 
-  background: #E68A00; 
-  transform: translateY(-2px); 
-}
-.registry-btn.macys { 
-  background: #EC1C24; 
-}
-.registry-btn.macys:hover { 
-  background: #C8102E; 
-  transform: translateY(-2px); 
-}
-.payment-btn.zelle { 
-  background: #6D1ED4; 
-}
-.payment-btn.zelle:hover { 
-  background: #5A18B2; 
-  transform: translateY(-2px); 
-}
-.payment-btn.cashapp { 
-  background: #00D632; 
-}
-.payment-btn.cashapp:hover { 
-  background: #00B82A; 
-  transform: translateY(-2px); 
-}
+.registry-btn.amazon { background: #FF9900; }
+.registry-btn.amazon:hover { background: #E68A00; transform: translateY(-2px); }
+.registry-btn.macys { background: #EC1C24; }
+.registry-btn.macys:hover { background: #C8102E; transform: translateY(-2px); }
+.payment-btn.zelle { background: #6D1ED4; }
+.payment-btn.zelle:hover { background: #5A18B2; transform: translateY(-2px); }
+.payment-btn.cashapp { background: #00D632; }
+.payment-btn.cashapp:hover { background: #00B82A; transform: translateY(-2px); }
 
 /* === HOTELS & ATTRACTIONS === */
 .section-intro { 
@@ -636,12 +592,8 @@ html, body, #root {
   background: rgba(255,255,255,0.6); 
   transform: scale(1.1); 
 }
-.scroll-arrow.left { 
-  left: 15px; 
-}
-.scroll-arrow.right { 
-  right: 15px; 
-}
+.scroll-arrow.left { left: 15px; }
+.scroll-arrow.right { right: 15px; }
 
 .scrollable-container { 
   max-width: 900px; 
@@ -658,9 +610,7 @@ html, body, #root {
   padding: 1rem 0; 
   scrollbar-width: none; 
 }
-.scrollable-grid::-webkit-scrollbar { 
-  display: none; 
-}
+.scrollable-grid::-webkit-scrollbar { display: none; }
 .scrollable-card { 
   flex: 0 0 260px; 
   min-width: 260px; 
@@ -707,36 +657,35 @@ html, body, #root {
   justify-content: center; 
   flex-wrap: wrap; 
 }
-/* === INSTAGRAM + THANK YOU – TRANSPARENT GLASS === */
 .instagram-left, .instagram-right {
   flex: 1; 
   min-width: 300px; 
-  background: rgba(255, 255, 255, 0.15);    /* ← TRANSPARENT */
-  backdrop-filter: blur(15px);               /* ← FROSTED GLASS */
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
   padding: 2.5rem 2rem; 
   border-radius: 12px; 
-  border: 1px solid rgba(255, 255, 255, 0.3); /* ← GLOWING EDGE */
+  border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   text-align: center; 
-  color: white;                             /* ← WHITE TEXT */
+  color: white;
 }
 .instagram-title, .thankyou-title { 
   font-size: 2.5rem; 
   font-weight: 300; 
-  color: black;                             /* ← WHITE TEXT */
+  color: black;
   margin-bottom: 1rem; 
   text-transform: uppercase; 
   letter-spacing: 2px; 
 }
 .instagram-hashtag { 
   font-size: 1.4rem; 
-  color: black;                             /* ← WHITE TEXT */
+  color: black;
   margin: 1rem 0; 
   font-weight: bold; 
 }
 .thankyou-text { 
   font-size: 1.3rem; 
-  color: black;                             /* ← WHITE TEXT */
+  color: black;
   line-height: 1.8; 
   max-width: 400px; 
   margin: 0 auto; 
@@ -771,6 +720,13 @@ html, body, #root {
   }
   .venue-title, .itinerary-title, .meals-title, .gifts-title { font-size: 2.8rem; }
   .meals-text, .gifts-text { font-size: 1.25rem; }
+
+  .itinerary-tbd {
+    font-size: 1.5rem;
+  }
+  .itinerary-backdrop {
+    padding: 3rem 1.5rem;
+  }
 
   .scrollable-card { flex: 0 0 calc(100% - 2rem) !important; min-width: calc(100% - 2rem) !important; }
   .dress-code-header { font-size: 2.2rem; }

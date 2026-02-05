@@ -360,13 +360,8 @@ function App() {
         {lang === 'en' ? 'Itinerary' : 'Itinerario'}
       </h2>
       
-      {/* Replaced list with image */}
-      <div className="itinerary-image-container">
-        <img 
-          src="/assets/itinerary.jpeg" 
-          alt="Wedding Itinerary" 
-          className="itinerary-image"
-        />
+      <div className="itinerary-tbd">
+        {lang === 'en' ? 'To be defined' : 'Por definir'}
       </div>
     </div>
   </div>
