@@ -310,22 +310,35 @@ html, body, #root {
   transform: translateY(-2px); 
 }
 
-/* === ITINERARY – TRANSPARENT GLASS STYLE === */
+.section-itinerary {
+  padding: 0;                    /* remove any default section padding if it adds space */
+  margin: 0;
+}
+
 .itinerary-backdrop {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(15px);
-  padding: 4rem 2rem;
-  border-radius: 12px;
-  max-width: 600px;
-  width: 90%;
-  text-align: center;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 40vh;
+  /* Keep ALL your original background styles here — color, gradient, pattern, etc. */
+  /* Example (use whatever you actually have): */
+  /* background: linear-gradient(to bottom, #f9f5f0, #e8d9c5); */
+  /* or: background-color: #f8f1e9; */
+
+  padding: 4rem 1rem;            /* ← controls breathing room ABOVE/BELOW the image */
+  text-align: center;            /* centers the image horizontally */
+  min-height: 40vh;              /* ← adjust this to give more/less vertical space */
+}
+
+.itinerary-raw-image {
+  max-width: 720px;              /* ← main control: how wide the image can get */
+  width: 85%;                    /* responsive — slightly smaller on narrow screens */
+  height: auto;
+  display: block;
+  margin: 0 auto;                /* centers it */
+
+  /* IMPORTANT: no box, no border, no shadow */
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  background: transparent;       /* in case image has transparency */
 }
 
 .itinerary-title { 
@@ -758,5 +771,14 @@ html, body, #root {
   
   .mobile-nav-scrollable {
     -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (max-width: 768px) {
+  .itinerary-backdrop {
+    padding: 2rem 0.5rem;
+  }
+  .itinerary-raw-image {
+    width: 94%;                /* almost full-width on phones but still no box */
   }
 }

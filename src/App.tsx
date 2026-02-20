@@ -352,18 +352,14 @@ function App() {
         </div>
       </section>
 
-{/* Section 3 – Itinerary */}
+{/* Section 3 – Itinerary – image only, no box */}
 <section ref={itineraryRef} className="section section-itinerary">
   <div className="itinerary-backdrop">
-    <div className="section-content">
-      <h2 className="itinerary-title">
-        {lang === 'en' ? 'Itinerary' : 'Itinerario'}
-      </h2>
-      
-      <div className="itinerary-tbd">
-        {lang === 'en' ? 'To be defined' : 'Por definir'}
-      </div>
-    </div>
+    <img
+      src="/assets/itinerary2.jpeg"
+      alt="Wedding itinerary"
+      className="itinerary-raw-image"
+    />
   </div>
 </section>
 
