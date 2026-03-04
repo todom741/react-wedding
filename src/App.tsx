@@ -27,7 +27,8 @@ interface Translation {
   itineraryItems: string[];
 
   // Meals
-  mealsText: string;
+  mealsText: string;           // kept for type safety (no longer displayed)
+  mealsCaptions: string[];     // ← NEW: captions for the two meal images
 
   // Dress Code
   dressCodeHeader: string;
@@ -51,7 +52,7 @@ interface Translation {
   hotel2: string; hotel2Desc: string[];
   hotel3: string; hotel3Desc: string[];
   hotel4: string; hotel4Desc: string[];
-  hotel5: string; hotel5Desc: string[];  // ← NEW
+  hotel5: string; hotel5Desc: string[];
 
   // Attractions
   attractionsIntro: string;
@@ -92,6 +93,10 @@ const translations: Record<Lang, Translation> = {
     ],
 
     mealsText: "We're happy to share that the venue will be offering a la carte meals for all our wonderful guests. During the first two weeks of March 2026, we'll reach out to share the seasonal menu and kindly ask for your meal choices.",
+    mealsCaptions: [
+      "Top Sirloin Steak with Chimichurri Sauce",
+      "Grilled Chicken with Red Pepper Sauce",
+    ],
 
     dressCodeHeader: 'Dress Code',
     dressCodeGalleryText: 'Please check the gallery for ideas.',
@@ -155,6 +160,10 @@ const translations: Record<Lang, Translation> = {
     ],
 
     mealsText: 'Nos complace compartir que el lugar ofrecerá comidas a la carta para todos nuestros maravillosos invitados. Durante las primeras dos semanas de marzo de 2026, nos pondremos en contacto para compartir el menú de temporada y pedir amablemente sus elecciones de comida.',
+    mealsCaptions: [
+      "Solomillo de Res con Salsa Chimichurri",
+      "Pollo a la Parrilla con Salsa de Pimiento Rojo",
+    ],
 
     dressCodeHeader: 'Código de Vestimenta',
     dressCodeGalleryText: 'Por favor revisa la galería para ideas.',
@@ -181,7 +190,7 @@ const translations: Record<Lang, Translation> = {
     hotel5: 'Hyatt Place Atlanta/Buckhead',
     hotel5Desc: ['🌟 Desayuno gratis', 'Piscina al aire libre', 'Admite mascotas', 'Fitness 24 horas'],
 
-    attractionsIntro: 'ATRACIONES EN ATL',
+    attractionsIntro: 'ATRACCIONES EN ATL',
     attr1: 'Acuario de Georgia',
     attr1Desc: ['El acuario más grande del mundo', 'Tiburones ballena y delfines', 'Exhibición Ocean Voyager', 'Ideal para familias'],
     attr2: 'Mundo de Coca-Cola',
@@ -197,7 +206,8 @@ const translations: Record<Lang, Translation> = {
 function App() {
   const [lang, setLang] = useState<Lang>('en');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [galleryIndex, setGalleryIndex] = useState(0);
+  const [galleryIndex, setGalleryIndex] = useState(0);           // Dress code
+  const [mealsGalleryIndex, setMealsGalleryIndex] = useState(0); // Meals
 
   const t = translations[lang];
 
@@ -231,7 +241,7 @@ function App() {
     });
   };
 
-  // === Dress Code Gallery Images ===
+  // Dress Code Gallery
   const galleryImages = [
     './assets/dress1.jpg',
     './assets/dress2.jpg',
@@ -243,29 +253,34 @@ function App() {
     './assets/dress8.jpg',
   ];
 
-  const nextImage = () => {
-    setGalleryIndex((prev) => (prev + 1) % galleryImages.length);
-  };
+  const nextImage = () => setGalleryIndex((prev) => (prev + 1) % galleryImages.length);
+  const prevImage = () => setGalleryIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
 
-  const prevImage = () => {
-    setGalleryIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
-  };
+  // Meals Gallery
+  const mealsImages = [
+    './assets/steak.jpg',
+    './assets/chicken.jpg',
+  ];
+
+  const nextMealImage = () => setMealsGalleryIndex((prev) => (prev + 1) % mealsImages.length);
+  const prevMealImage = () => setMealsGalleryIndex((prev) => (prev - 1 + mealsImages.length) % mealsImages.length);
 
   const navItems = [
-    { label: t.home, ref: homeRef },
-    { label: t.venue, ref: venueRef },
-    { label: t.itinerary, ref: itineraryRef },
-    { label: t.meals, ref: mealsRef },
-    { label: t.dressCode, ref: dressCodeRef },
-    { label: t.rsvp, ref: rsvpRef },
-    { label: t.gifts, ref: giftsRef },
-    { label: t.hotels, ref: hotelsRef },
+    { label: t.home,     ref: homeRef },
+    { label: t.venue,    ref: venueRef },
+    { label: t.itinerary,ref: itineraryRef },
+    { label: t.meals,    ref: mealsRef },
+    { label: t.dressCode,ref: dressCodeRef },
+    { label: t.rsvp,     ref: rsvpRef },
+    { label: t.gifts,    ref: giftsRef },
+    { label: t.hotels,   ref: hotelsRef },
     { label: t.attractions, ref: attractionsRef },
-    { label: t.instagram, ref: instagramRef },
+    { label: t.instagram,ref: instagramRef },
   ];
 
   return (
     <div className="app-wrapper">
+
       {/* Header */}
       <header className="header">
         <div className="nav-left">
@@ -299,7 +314,6 @@ function App() {
       {/* Mobile Menu */}
       <div className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>
         <div className="mobile-menu-content" onClick={(e) => e.stopPropagation()}>
-          {/* Scrollable Navigation Items */}
           <div className="mobile-nav-scrollable">
             {navItems.map((item) => (
               <button key={item.label} className="mobile-nav-item" onClick={() => scrollTo(item.ref)}>
@@ -307,7 +321,6 @@ function App() {
               </button>
             ))}
           </div>
-          {/* Fixed Language Buttons at Bottom */}
           <div className="mobile-lang-group">
             <button className={`mobile-lang-btn ${lang === 'en' ? 'active' : ''}`} onClick={() => { setLang('en'); setIsMobileMenuOpen(false); }}>
               English
@@ -319,61 +332,66 @@ function App() {
         </div>
       </div>
 
-      {/* Section 1 – Home */}
+      {/* Home */}
       <section ref={homeRef} className="section section-1">
         <div className="section-content">
-          <p className="section-subtitle">
-            {lang === 'en' ? 'Our Wedding' : 'Nuestra Boda'}
-          </p>
+          <p className="section-subtitle">{lang === 'en' ? 'Our Wedding' : 'Nuestra Boda'}</p>
           <h1 className="section-title">Edna and Tyler</h1>
           <p className="section-date">04/04/26</p>
           <p className="home-intro">{t.homeIntro}</p>
         </div>
       </section>
 
-      {/* Section 2 – Venue */}
+      {/* Venue */}
       <section ref={venueRef} className="section section-venue">
         <div className="venue-backdrop">
           <div className="section-content">
-            <h2 className="venue-title">
-              {lang === 'en' ? 'The Venue' : 'El Lugar'}
-            </h2>
+            <h2 className="venue-title">{lang === 'en' ? 'The Venue' : 'El Lugar'}</h2>
             <p className="venue-name">{t.venueName}</p>
             <p className="venue-address">{t.venueAddress}</p>
-            <a
-              href="https://www.google.com/maps/search/?api=1&query=Swan+Coach+House+Atlanta"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="venue-link"
-            >
+            <a href="https://www.google.com/maps/search/?api=1&query=Swan+Coach+House+Atlanta" target="_blank" rel="noopener noreferrer" className="venue-link">
               {t.viewOnMaps}
             </a>
           </div>
         </div>
       </section>
 
-{/* Section 3 – Itinerary – image only, no box */}
-<section ref={itineraryRef} className="section section-itinerary">
-  <div className="itinerary-backdrop">
-    <img
-      src="/assets/itinerary2.jpeg"
-      alt="Wedding itinerary"
-      className="itinerary-raw-image"
-    />
-  </div>
-</section>
+      {/* Itinerary */}
+      <section ref={itineraryRef} className="section section-itinerary">
+        <div className="itinerary-backdrop">
+          <img src="/assets/itinerary2.jpeg" alt="Wedding itinerary" className="itinerary-raw-image" />
+        </div>
+      </section>
 
-      {/* Meals Section - TITLE INSIDE WHITE BOX */}
+      {/* Meals – carousel with caption */}
       <section ref={mealsRef} className="section section-meals">
         <div className="meals-container">
-          <div className="meals-content">
-            <h1 className="meals-title">{t.meals}</h1>
-            <p className="meals-text">{t.mealsText}</p>
+          <div className="gallery-carousel">
+            <button
+              className="gallery-arrow left"
+              onClick={prevMealImage}
+              aria-label="Previous meal image"
+            />
+            <div className="gallery-image-wrapper">
+              <img
+                src={mealsImages[mealsGalleryIndex]}
+                alt={t.mealsCaptions[mealsGalleryIndex]}
+                className="gallery-image"
+              />
+              <p className="gallery-caption">
+                {t.mealsCaptions[mealsGalleryIndex]}
+              </p>
+            </div>
+            <button
+              className="gallery-arrow right"
+              onClick={nextMealImage}
+              aria-label="Next meal image"
+            />
           </div>
         </div>
       </section>
 
-      {/* Dress Code Section - NO HEADER, ONLY GALLERY */}
+      {/* Dress Code */}
       <section ref={dressCodeRef} className="section section-3">
         <div className="dress-code-container">
           <div className="gallery-carousel">
@@ -388,36 +406,27 @@ function App() {
         </div>
       </section>
 
-      {/* Section 5 – RSVP */}
+      {/* RSVP */}
       <section ref={rsvpRef} className="section section-6">
         <div className="rsvp-backdrop">
           <div className="section-content">
             <h1 className="rsvp-title">{t.rsvp}</h1>
             <p className="rsvp-text">{t.contactText}</p>
             <div className="whatsapp-links">
-              <a href={`https://wa.me/${t.ednaPhone.replace(/[^0-9]/g, '')}`} target="_blank" rel="noopener noreferrer" className="whatsapp-btn">
-                Edna
-              </a>
-              <a href={`https://wa.me/${t.tylerPhone.replace(/[^0-9]/g, '')}`} target="_blank" rel="noopener noreferrer" className="whatsapp-btn">
-                Tyler
-              </a>
+              <a href={`https://wa.me/${t.ednaPhone.replace(/[^0-9]/g, '')}`} target="_blank" rel="noopener noreferrer" className="whatsapp-btn">Edna</a>
+              <a href={`https://wa.me/${t.tylerPhone.replace(/[^0-9]/g, '')}`} target="_blank" rel="noopener noreferrer" className="whatsapp-btn">Tyler</a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Section 6 – Gifts - TITLE INSIDE WHITE BOX */}
+      {/* Gifts */}
       <section ref={giftsRef} className="section section-gifts">
         <div className="gifts-container">
           <div className="gifts-combined">
             <h1 className="gifts-title">{t.gifts}</h1>
             <div className="registry-buttons-centered">
-              <a href="https://amazon.com/wedding/registry/3MSHUXWMQO7K0" target="_blank" rel="noopener noreferrer" className="registry-btn amazon">
-                Amazon
-              </a>
-              <a href="https://www.macys.com/registry/Tyler-Odom-Edna-Garcia/1270006" target="_blank" rel="noopener noreferrer" className="registry-btn macys">
-                Macy's
-              </a>
+              <a href="https://www.macys.com/registry/Tyler-Odom-Edna-Garcia/1270006" target="_blank" rel="noopener noreferrer" className="registry-btn macys">Macy's</a>
             </div>
             <p className="gifts-text">{t.zelleCashAppText}</p>
             <div className="payment-links">
@@ -428,7 +437,7 @@ function App() {
         </div>
       </section>
 
-      {/* Section 7 – Hotels - 5 NEW HOTELS */}
+      {/* Hotels */}
       <section ref={hotelsRef} className="section section-4">
         <div className="scrollable-container">
           <p className="section-intro">{t.hotelsIntro}</p>
@@ -437,60 +446,25 @@ function App() {
             <button className="scroll-arrow right" onClick={() => scrollHorizontal(hotelsScrollRef.current, 'right')} />
           </div>
           <div className="scrollable-grid" ref={hotelsScrollRef}>
-            {/* Hotel 1 */}
-            <div className="scrollable-card">
-              <h2 className="scrollable-label">{t.hotel1}</h2>
-              <ul className="scrollable-list">
-                {t.hotel1Desc.map((item, i) => (
-                  <li key={i}>{item}</li>
-                ))}
-              </ul>
-            </div>
-            
-            {/* Hotel 2 */}
-            <div className="scrollable-card">
-              <h2 className="scrollable-label">{t.hotel2}</h2>
-              <ul className="scrollable-list">
-                {t.hotel2Desc.map((item, i) => (
-                  <li key={i}>{item}</li>
-                ))}
-              </ul>
-            </div>
-            
-            {/* Hotel 3 */}
-            <div className="scrollable-card">
-              <h2 className="scrollable-label">{t.hotel3}</h2>
-              <ul className="scrollable-list">
-                {t.hotel3Desc.map((item, i) => (
-                  <li key={i}>{item}</li>
-                ))}
-              </ul>
-            </div>
-            
-            {/* Hotel 4 */}
-            <div className="scrollable-card">
-              <h2 className="scrollable-label">{t.hotel4}</h2>
-              <ul className="scrollable-list">
-                {t.hotel4Desc.map((item, i) => (
-                  <li key={i}>{item}</li>
-                ))}
-              </ul>
-            </div>
-            
-            {/* Hotel 5 - NEW */}
-            <div className="scrollable-card">
-              <h2 className="scrollable-label">{t.hotel5}</h2>
-              <ul className="scrollable-list">
-                {t.hotel5Desc.map((item, i) => (
-                  <li key={i}>{item}</li>
-                ))}
-              </ul>
-            </div>
+            {[
+              { title: t.hotel1, desc: t.hotel1Desc },
+              { title: t.hotel2, desc: t.hotel2Desc },
+              { title: t.hotel3, desc: t.hotel3Desc },
+              { title: t.hotel4, desc: t.hotel4Desc },
+              { title: t.hotel5, desc: t.hotel5Desc },
+            ].map((hotel, i) => (
+              <div key={i} className="scrollable-card">
+                <h2 className="scrollable-label">{hotel.title}</h2>
+                <ul className="scrollable-list">
+                  {hotel.desc.map((item, idx) => <li key={idx}>{item}</li>)}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Section 8 – Attractions */}
+      {/* Attractions */}
       <section ref={attractionsRef} className="section section-5">
         <div className="scrollable-container">
           <p className="section-intro">{t.attractionsIntro}</p>
@@ -513,7 +487,7 @@ function App() {
         </div>
       </section>
 
-      {/* Section 9 – Instagram + Thank You */}
+      {/* Instagram + Thank You */}
       <section ref={instagramRef} className="section section-instagram">
         <div className="instagram-grid">
           <div className="instagram-left">
